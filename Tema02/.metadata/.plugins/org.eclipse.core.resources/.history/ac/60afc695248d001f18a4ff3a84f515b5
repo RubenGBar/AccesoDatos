@@ -1,0 +1,20 @@
+package boletin1;
+
+public class Tarea1 {
+	
+	public static void main(String[] args) {
+		
+		try {
+			
+			String directorio = "C:\\Users\\rgarcia\\";
+			
+		}catch(Exception e) {
+			
+			System.out.println("Error: " + e.getMessage());
+			
+		}
+		
+		
+	}
+	
+}
