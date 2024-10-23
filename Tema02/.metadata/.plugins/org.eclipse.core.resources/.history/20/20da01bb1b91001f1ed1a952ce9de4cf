@@ -1,0 +1,34 @@
+package boletin2;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Tarea1 {
+	
+	public static void main(String[] args) {
+		
+		try {
+			leerFichero();
+		} catch (IOException e) {
+			System.out.println("Ha habido un error");
+		}
+		
+	}
+	
+	public static void leerFichero() throws IOException {
+        
+        File fichero=new File("src/boletin2/palabras.txt");
+		FileReader fic=new FileReader(fichero);
+		int i;
+		char[] letras=new char[(int) fichero.length()];
+		while ((i = fic.read(letras,0,2)) != -1) { //se va leyendo un carÃ¡cter hasta que lea -1
+			System.out.println(letras); //cast a char
+		}
+
+		fic.close(); //cerrar fichero  
+		
+	}
+	
+}

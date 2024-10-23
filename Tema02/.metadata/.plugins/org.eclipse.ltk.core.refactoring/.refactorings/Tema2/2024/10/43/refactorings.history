@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Extract local variable &apos;rutaArchivo&apos; from expression &apos;&quot;src/boletin2/palabras.txt&quot;&apos;&#x0D;&#x0A;- Original project: &apos;Tema2&apos;&#x0D;&#x0A;- Variable name: &apos;rutaArchivo&apos;&#x0D;&#x0A;- Destination method: &apos;boletin2.Tarea1.leerFichero()&apos;&#x0D;&#x0A;- Variable expression: &apos;&quot;src/boletin2/palabras.txt&quot;&apos;&#x0D;&#x0A;- Replace occurrences of expression with variable" description="Extract local variable &apos;rutaArchivo&apos;" final="false" id="org.eclipse.jdt.ui.extract.temp" input="/src&lt;boletin2{Tarea1.java" name="rutaArchivo" replace="true" replaceAllInThisFile="false" selection="377 27" stamp="1729674634244" varType="false" version="1.0"/>
+</session>
