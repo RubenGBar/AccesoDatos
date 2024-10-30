@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;palabrasss&apos; in &apos;boletin2.Tarea2.leeDocumento()&apos; to &apos;palabras&apos;&#x0D;&#x0A;- Original project: &apos;Tema2&apos;&#x0D;&#x0A;- Original element: &apos;boletin2.Tarea2.leeDocumento().palabrasss&apos;&#x0D;&#x0A;- Renamed element: &apos;palabrasss&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;palabrasss&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;boletin2{Tarea2.java[Tarea2~leeDocumento@palabrasss!464!513!483!492!QArrayList\&lt;QString;&gt;;!0!false" name="palabras" references="true" stamp="1730277771019" version="1.0"/>
+</session>

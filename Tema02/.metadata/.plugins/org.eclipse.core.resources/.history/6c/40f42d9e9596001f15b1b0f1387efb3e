@@ -14,7 +14,7 @@ public class Tarea1 {
     }
     
     public static void leeDocumento() {
-        String rutaArchivo = "src/boletin2/palabras.txt";
+        String rutaArchivo = "src/archivo/palabrasJuntas.txt";
         String palabras[];
         String linea;
 

@@ -6,26 +6,26 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class Tarea1 {
+public class Tarea2 {
 	
 	public static void main(String[] args) {
         leeDocumento();
     }
     
     public static void leeDocumento() {
-        String rutaArchivo = "src/boletin2/palabras.txt";
-        String palabras[];
+        String rutaArchivo = "src/boletin2/palabrasSeparadas.txt";
+        ArrayList <String> palabras = new ArrayList<>();
         String linea;
+        int contador = 0;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(rutaArchivo))) {
-
-            linea = reader.readLine();
-
-            palabras = linea.split("(?=\\p{Lu})");
-
-            for (String palabra : palabras) {
-                escribeArchivo(palabra);
+            
+            while((linea = reader.readLine()) != null) {
+            	palabras.add(linea);
+            	contador++;
             }
 
             reader.close();
@@ -34,15 +34,23 @@ public class Tarea1 {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        Collections.sort(palabras);
+        escribeArchivo(palabras);
+        
     }
     
-    public static void escribeArchivo(String palabra) {
-        String ruta = "src/boletin2/palabrasSeparadas.txt";
+    public static void escribeArchivo(ArrayList <String> palabras) {
+        String ruta = "src/boletin2/palabrasOrdenadas.txt";
         BufferedWriter bw = null;
         try {
             // Abrir el archivo en modo append para no sobrescribir
             bw = new BufferedWriter(new FileWriter(ruta, true));
-            bw.write(palabra + "\n");
+            
+            for(String palabra: palabras) {
+            	bw.write(palabra + "\n");
+            }
+            
         } catch (IOException e) {
             System.out.println("Ha habido algún error");
         } finally {
