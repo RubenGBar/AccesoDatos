@@ -19,6 +19,8 @@
 		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
 		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\rgarcia\Downloads\ficheroAleatorio.zip"/>
+			<item value="C:\Users\rgarcia\Downloads\ficheroSecuencial.zip"/>
 			<item value="C:\Users\rgarcia\Downloads\CreacionFicheros.zip"/>
 			<item value="C:\Users\rgarcia\Downloads\arbol.zip"/>
 		</list>
