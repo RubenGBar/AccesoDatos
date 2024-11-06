@@ -1,0 +1,38 @@
+package boletin2;
+import java.io.*;
+
+public class Tarea3 {
+
+	public static void main(String[] args) throws IOException {
+		
+	}
+	
+	public static void leerFichero() {
+		String ruta = "src/boletin2/1letra.txt";
+		File fichero = new File(ruta);
+		RandomAccessFile file = null;
+		int pos = 0;
+		char aux = '\0';
+		
+		try {
+			
+			file = new RandomAccessFile(fichero, "r");
+			
+			while(file.getFilePointer() != file.length()) {
+				file.seek(pos);
+				aux = file.readChar();
+			}
+			
+			
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		System.out.println(aux);
+		
+	}
+	
+}
