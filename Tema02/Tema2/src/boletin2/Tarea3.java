@@ -5,8 +5,15 @@ public class Tarea3 {
 
 	public static void main(String[] args) throws IOException {
 		
-		String letra = leerFicheroMierdoso();
-		escribe5a(letra);
+		/* String letra = leerFicheroMierdoso();
+		escribe5a(letra); */
+		
+		String letras = leerFichero2();
+		escribeFichero2(letras);
+		
+		/*
+		 * No sé cómo hacer el tercer apartado
+		 * */
 		
 	}
 	
@@ -61,14 +68,14 @@ public class Tarea3 {
 		
 	}
 	
-	public static void leerByte() {
+	public static String leerFichero2() {
 		
-		String ruta = "src/boletin2/1letra.txt";
+		String ruta = "src/boletin2/5letras.txt";
 		RandomAccessFile file;
 		int pos = 0;
 		byte aux;
 		char letra = '\0';
-		
+		String letras = "";
 		
 		try {
 			
@@ -78,6 +85,8 @@ public class Tarea3 {
 				file.seek(pos);
 				aux = file.readByte();
 				letra = (char)aux;
+				letras += letra;
+				pos++;
 			}
 			
 			file.close();
@@ -87,6 +96,107 @@ public class Tarea3 {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		letras = letras.replace("\n", "");
+		
+		return letras;
+		
+	}
+	
+	public static void escribeFichero2(String letras) {
+		
+		char letra;
+		String ruta = "src/boletin2/5letrasreves.txt";
+		RandomAccessFile file;
+		int fin = letras.length();
+		
+		try {
+			
+			file = new RandomAccessFile(ruta, "rw");
+
+			for (int i = 0; i < fin; i++) {
+				System.out.println(letras.charAt(i));
+				if(letras.charAt(i) != '\n' && letras.charAt(i) != '\r') {
+					letra = letras.charAt(fin - i - 1);
+					file.writeChar(letra);
+					file.writeChar('\n');
+				}
+			}
+			
+			file.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public static String leerFichero3() {
+		
+		String ruta = "src/boletin2/5letras.txt";
+		RandomAccessFile file;
+		int pos = 0;
+		byte aux;
+		char letra = '\0';
+		String letras = "";
+		
+		try {
+			
+			file = new RandomAccessFile(ruta, "r");
+			
+			while(file.getFilePointer() != file.length()) {
+				file.seek(pos);
+				aux = file.readByte();
+				letra = (char)aux;
+				letras += letra;
+				pos++;
+			}
+			
+			file.close();
+			
+		} catch (FileNotFoundException e) {
+			System.out.println(e);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		letras = letras.replace("\n", "");
+		
+		return letras;
+		
+	}
+	
+	public static void escribeFichero3(String letras) {
+		
+		char letra;
+		String ruta = "src/boletin2/5letrasreves.txt";
+		RandomAccessFile file;
+		int fin = letras.length();
+		
+		try {
+			
+			file = new RandomAccessFile(ruta, "rw");
+
+			for (int i = 0; i < fin; i++) {
+				System.out.println(letras.charAt(i));
+				if(letras.charAt(i) != '\n' && letras.charAt(i) != '\r') {
+					letra = letras.charAt(fin - i - 1);
+					file.writeChar(letra);
+					file.writeChar('\n');
+				}
+			}
+			
+			file.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
