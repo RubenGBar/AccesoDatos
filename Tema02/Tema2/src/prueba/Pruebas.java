@@ -1,0 +1,24 @@
+package prueba;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class Pruebas {
+	
+	public static void main(String[] args) {
+		
+		String url = "jdbc:mysql://dns11036.phdns11.es:3306?";
+		String user = "rgarcia";
+		String password = "12345";
+		
+		try {
+			Connection conn = DriverManager.getConnection(url, user, password);
+			System.out.println(conn);
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+	}
+
+}
