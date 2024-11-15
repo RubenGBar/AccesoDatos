@@ -47,11 +47,9 @@ public class Pruebas {
 	
 	public static void listadoEdad() {
 		
-		ResultSet lista = null;
-		
 		try {
 			PreparedStatement listaEdad = conn.prepareStatement("SELECT * FROM Persona ORDER BY edad");
-			lista = listaEdad.executeQuery();
+			ResultSet lista = listaEdad.executeQuery();
 			int rowCount = 0;
 			
 			while(lista.next()) {
@@ -64,21 +62,16 @@ public class Pruebas {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println(e);
-		} finally {
-			try {
-				lista.close();
-			} catch (SQLException e) {
-				System.out.println(e);
-			}
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 	}
 	
 	public static void menu() {
-		System.out.println(" --------------");
-		System.out.println("|     Menú     |");
-		System.out.println(" --------------");
+		System.out.println(" ------------");
+		System.out.println("|   Menú     |");
+		System.out.println(" ------------");
 		System.out.println("1. Listado por Edad");
 	}
 	

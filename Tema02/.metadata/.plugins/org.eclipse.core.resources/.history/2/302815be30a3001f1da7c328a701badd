@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class Pruebas {
 	
@@ -13,45 +12,26 @@ public class Pruebas {
 	
 	public static void main(String[] args) {
 		
-		int opc = 0;
-		Scanner sc = new Scanner(System.in);
-		
-		conectar();
-		menu();
-		System.out.println("Elija una opción");
-		opc = sc.nextInt();
-		switch(opc) {
-		
-			case 1 -> {
-				listadoEdad();
-			}
-			default ->{
-				System.out.println("No se ha elegido una opción correcta");
-			}
-			
-		}
-		
-	}
-
-	public static void conectar() {
 		String url = "jdbc:mysql://dns11036.phdns11.es:3306/ad2425_rgarcia";
 		String user = "rgarcia";
 		String password = "12345";
 		
 		try {
 			conn = DriverManager.getConnection(url, user, password);
+			System.out.println(conn);
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
+		
+		listadoEdad();
+		
 	}
 	
 	public static void listadoEdad() {
 		
-		ResultSet lista = null;
-		
 		try {
 			PreparedStatement listaEdad = conn.prepareStatement("SELECT * FROM Persona ORDER BY edad");
-			lista = listaEdad.executeQuery();
+			ResultSet lista = listaEdad.executeQuery();
 			int rowCount = 0;
 			
 			while(lista.next()) {
@@ -64,22 +44,10 @@ public class Pruebas {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println(e);
-		} finally {
-			try {
-				lista.close();
-			} catch (SQLException e) {
-				System.out.println(e);
-			}
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-	}
-	
-	public static void menu() {
-		System.out.println(" --------------");
-		System.out.println("|     Menú     |");
-		System.out.println(" --------------");
-		System.out.println("1. Listado por Edad");
 	}
 	
 }
