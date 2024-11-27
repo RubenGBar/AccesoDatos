@@ -91,6 +91,8 @@ public class Pruebas {
 			
 		} while(opc != 0);
 		
+		sc.close();
+		
 	}
 	
 	/*
