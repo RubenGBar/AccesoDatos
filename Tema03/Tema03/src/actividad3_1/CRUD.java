@@ -2,7 +2,6 @@ package actividad3_1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -90,10 +89,11 @@ public class CRUD {
 		System.out.println("|     Menú     |");
 		System.out.println(" --------------");
 		System.out.println("1. Crear Todas las Tablas");
-		System.out.println("2. Crear Tabla Factura");
-		System.out.println("3. Crear Tabla Pedido");
-		System.out.println("4. Crear Tabla Mesa");
-		System.out.println("5. Crear Tabla Productos");
+		System.out.println("2. Crear Tabla Mesas");
+		System.out.println("3. Crear Tabla Productos");
+		System.out.println("4. Crear Tabla Facturas");
+		System.out.println("5. Crear Tabla Pedidos");
+		System.out.println("0. Salir");
 	}
 	
 	public static void crearTablas() {
@@ -108,23 +108,44 @@ public class CRUD {
 			switch(opc) {
 				
 				case 1 ->{
-					crearTodaLasTablas();
+					if(CreacionTablas.crearTodaLasTablas()) {
+						System.out.println("Todas las tablas creadas correctamente");
+					} else {
+						System.out.println("No se han podido crear las tablas");
+					}
+					
 				}
 				
 				case 2 ->{
-					crearTablaFacturas();
+					if(CreacionTablas.crearTablaMesas()) {
+						System.out.println("Tabla Mesas creada creadascorrectamente");
+					} else {
+						System.out.println("No se ha podido crear la tabla Mesas");
+					}
 				}
 				
 				case 3 ->{
-					crearTablaPedidos();
+					if(CreacionTablas.crearTablaProductos()) {
+						System.out.println("Tabla Productos creada creadascorrectamente");
+					} else {
+						System.out.println("No se ha podido crear la tabla Productos");
+					}
 				}
 				
 				case 4 ->{
-					crearTablaMesas();
+					if(CreacionTablas.crearTablaFacturas()) {
+						System.out.println("Tabla Factura creada creadascorrectamente");
+					} else {
+						System.out.println("No se ha podido crear la tabla Factura");
+					}
 				}
 				
 				case 5 ->{
-					crearTablaProductos();
+					if(CreacionTablas.crearTablaPedidos()) {
+						System.out.println("Tabla Pedidos creada creadascorrectamente");
+					} else {
+						System.out.println("No se ha podido crear la tabla Pedidos");
+					}
 				}
 				default ->{
 					System.out.println("No se ha elegido una opción correcta");
@@ -134,124 +155,6 @@ public class CRUD {
 			
 		} while(opc != 0);
 		
-		sc.close();
-		
-	}
-	
-	public static void crearTodaLasTablas() {
-		
-		ResultSet lista = null;
-		PreparedStatement query = null;
-
-		crearTablaMesas();
-		crearTablaProductos();
-		crearTablaFacturas();
-		crearTablaPedidos();
-
-	}
-	
-	public static void crearTablaMesas() {
-		
-		ResultSet lista = null;
-		PreparedStatement query = null;
-		
-		try {
-			
-			query = conn.prepareStatement("CREATE TABLE Mesas ( "
-					+ "idMesa INT AUTO_INCREMENT PRIMARY KEY, "
-					+ "numComensales INT NOT NULL, "
-					+ "reserva INT NOT NULL);");
-			lista = query.executeQuery();
-			
-		} catch (SQLException e) {
-			System.out.println(e);
-		} finally {
-			try {
-				lista.close();
-			} catch (SQLException e) {
-				System.out.println(e);
-			}
-		}
-		
-	}
-	
-	public static void crearTablaProductos() {
-		
-		ResultSet lista = null;
-		PreparedStatement query = null;
-		
-		try {
-			
-			query = conn.prepareStatement("CREATE TABLE Productos ( "
-					+ "idProducto INT AUTO_INCREMENT PRIMARY KEY, "
-					+ "Denominacion VARCHAR(45) NOT NULL, "
-					+ "Precio DECIMAL(10,2) NOT NULL);");
-			lista = query.executeQuery();
-			
-		} catch (SQLException e) {
-			System.out.println(e);
-		} finally {
-			try {
-				lista.close();
-			} catch (SQLException e) {
-				System.out.println(e);
-			}
-		}
-		
-	}
-	
-	public static void crearTablaFacturas() {
-		
-		ResultSet lista = null;
-		PreparedStatement query = null;
-		
-		try {
-			
-			query = conn.prepareStatement("CREATE TABLE Facturas ( "
-					+ "idFactura INT AUTO_INCREMENT PRIMARY KEY, "
-					+ "idMesa INT NOT NULL, "
-					+ "tipoPago VARCHAR(45) NOT NULL, "
-					+ "Importe DECIMAL(10,2) NOT NULL,"
-					+ "FOREIGN KEY (idMesa) REFERENCES Mesas(idMesa) );");
-			lista = query.executeQuery();
-			
-		} catch (SQLException e) {
-			System.out.println(e);
-		} finally {
-			try {
-				lista.close();
-			} catch (SQLException e) {
-				System.out.println(e);
-			}
-		}
-		
-	}
-	
-	public static void crearTablaPedidos() {
-		
-		ResultSet lista = null;
-		PreparedStatement query = null;
-		
-		try {
-			
-			query = conn.prepareStatement("CREATE TABLE Pedidos ( "
-					+ "idPedido INT AUTO_INCREMENT PRIMARY KEY, "
-					+ "idFactura INT NOT NULL, "
-					+ "idProducto INT NOT NULL, "
-					+ "cantidad INT NOT NULL, "
-					+ "FOREIGN KEY (idMesa) REFERENCES Mesas(idMesa),"
-					+ "FOREIGN KEY (idProducto) REFERENCES Productos(idProducto) );");
-			lista = query.executeQuery();
-			
-		} catch (SQLException e) {
-			System.out.println(e);
-		} finally {
-			try {
-				lista.close();
-			} catch (SQLException e) {
-				System.out.println(e);
-			}
-		}
 		
 	}
 	
