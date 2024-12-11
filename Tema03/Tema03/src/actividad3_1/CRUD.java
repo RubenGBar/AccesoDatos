@@ -11,6 +11,19 @@ public class CRUD {
 	static Connection conn = null;
 	static Scanner sc = new Scanner(System.in);;
 	
+	public static void menu() {
+		System.out.println(" --------------");
+		System.out.println("|     Menú     |");
+		System.out.println(" --------------");
+		System.out.println("1. Crear Tablas");
+		System.out.println("2. Insertar Datos");
+		System.out.println("3. Listar Datos");
+		System.out.println("4. Modificar Datos");
+		System.out.println("5. Borrar Datos");
+		System.out.println("6. Eliminar Tablas");
+		System.out.println("0. Salir");
+	}
+	
 	public static void main(String[] args) {
 		
 		int opc = 0;
@@ -20,8 +33,9 @@ public class CRUD {
 		do {
 			
 			menu();
-			System.out.println("Elija una opción");
+			System.out.println("Elija una opción: ");
 			opc = sc.nextInt();
+			
 			switch(opc) {
 				
 				case 1 ->{
@@ -29,7 +43,7 @@ public class CRUD {
 				}
 				
 				case 2 ->{
-					
+					insertarTablas();
 				}
 				
 				case 3 ->{
@@ -44,8 +58,12 @@ public class CRUD {
 					
 				}
 				
-				case 0 ->{
+				case 6 ->{
 					
+				}
+				
+				case 0 ->{
+					System.out.println("Desconectando...");
 				}
 				default ->{
 					System.out.println("No se ha elegido una opción correcta");
@@ -56,37 +74,28 @@ public class CRUD {
 		} while(opc != 0);
 		
 		sc.close();
-		System.out.println("Desconectando...");
 		
 	}
 	
-	public static void conectar() {
+	public static Connection conectar() {
 		String url = "jdbc:mysql://dns11036.phdns11.es:3306/ad2425_rgarcia";
 		String user = "rgarcia";
 		String password = "12345";
 		
 		try {
 			conn = DriverManager.getConnection(url, user, password);
+			System.out.println(conn);
 		} catch (SQLException e) {
 			System.out.println(e);
 		}
-	}
-	
-	public static void menu() {
-		System.out.println(" --------------");
-		System.out.println("|     Menú     |");
-		System.out.println(" --------------");
-		System.out.println("1. Crear Tablas");
-		System.out.println("2. Insertar Datos");
-		System.out.println("3. Listar Datos");
-		System.out.println("4. Modificar Datos");
-		System.out.println("5. Borrar Datos");
-		System.out.println("0. Salir");
+		
+		return conn;
+		
 	}
 	
 	public static void menuCreacion() {
 		System.out.println(" --------------");
-		System.out.println("|     Menú     |");
+		System.out.println("|     Crear    |");
 		System.out.println(" --------------");
 		System.out.println("1. Crear Todas las Tablas");
 		System.out.println("2. Crear Tabla Mesas");
@@ -103,7 +112,7 @@ public class CRUD {
 		do {
 			
 			menuCreacion();
-			System.out.println("Elija una opción");
+			System.out.println("Elija una opción: ");
 			opc = sc.nextInt();
 			switch(opc) {
 				
@@ -147,6 +156,9 @@ public class CRUD {
 						System.out.println("No se ha podido crear la tabla Pedidos");
 					}
 				}
+				case 0 ->{
+					System.out.println("Saliendo del menú creación");
+				}
 				default ->{
 					System.out.println("No se ha elegido una opción correcta");
 				}
@@ -155,6 +167,88 @@ public class CRUD {
 			
 		} while(opc != 0);
 		
+		
+	}
+	
+	public static void menuInsertar() {
+		
+		System.out.println(" --------------");
+		System.out.println("|    Inerta    |");
+		System.out.println(" --------------");
+		System.out.println("1. Insertar Tabla Mesas");
+		System.out.println("2. Insertar Tabla Productos");
+		System.out.println("4. Insertar Tabla Facturas");
+		System.out.println("5. Insertar Tabla Pedidos");
+		System.out.println("0. Salir");
+		
+	}
+	
+	public static void insertarTablas() {
+		
+		int opc = 0;
+		
+		do {
+			
+			menuInsertar();
+			System.out.println("Elija una opción: ");
+			opc = sc.nextInt();
+			
+			switch(opc) {
+				
+				case 1 ->{
+					
+					InsertarDatos.iniciarTablaMesas(conn);
+					
+					if(InsertarDatos.insertarTablaMesas(conn)) {
+						System.out.println("Insert ejecutado correctamente");
+					} else {
+						System.out.println("No se ha podido ejecutar el insert");
+					}
+					
+				}
+				
+				case 2 ->{
+					
+					InsertarDatos.iniciarTablaProductos(conn);
+					
+					if(InsertarDatos.insertarTablaProductos(conn)) {
+						System.out.println("Insert ejecutado correctamente");
+					} else {
+						System.out.println("No se ha podido ejecutar el insert");
+					}
+				}
+				
+				case 3 ->{
+					
+					InsertarDatos.iniciarTablaFacturas(conn);
+					
+					if(InsertarDatos.insertarTablaFacturas(conn)) {
+						System.out.println("Insert ejecutado correctamente");
+					} else {
+						System.out.println("No se ha podido ejecutar el insert");
+					}
+				}
+				
+				case 4 ->{
+					
+					InsertarDatos.iniciarTablaPedidos(conn);
+					
+					if(InsertarDatos.insertarTablaPedidos(conn)) {
+						System.out.println("Insert ejecutado correctamente");
+					} else {
+						System.out.println("No se ha podido ejecutar el insert");
+					}
+				}
+				case 0 ->{
+					System.out.println("Saliendo del menú insertar");
+				}
+				default ->{
+					System.out.println("No se ha elegido una opción correcta");
+				}
+				
+			}
+			
+		} while(opc != 0);
 		
 	}
 	
