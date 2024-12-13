@@ -47,7 +47,7 @@ public class CRUD {
 				}
 				
 				case 3 ->{
-					
+					listarTablas();
 				}
 				
 				case 4 ->{
@@ -177,8 +177,8 @@ public class CRUD {
 		System.out.println(" --------------");
 		System.out.println("1. Insertar Tabla Mesas");
 		System.out.println("2. Insertar Tabla Productos");
-		System.out.println("4. Insertar Tabla Facturas");
-		System.out.println("5. Insertar Tabla Pedidos");
+		System.out.println("3. Insertar Tabla Facturas");
+		System.out.println("4. Insertar Tabla Pedidos");
 		System.out.println("0. Salir");
 		
 	}
@@ -241,6 +241,63 @@ public class CRUD {
 				}
 				case 0 ->{
 					System.out.println("Saliendo del menú insertar");
+				}
+				default ->{
+					System.out.println("No se ha elegido una opción correcta");
+				}
+				
+			}
+			
+		} while(opc != 0);
+		
+	}
+	
+	public static void menuListar() {
+		
+		System.out.println(" --------------");
+		System.out.println("|    Listar    |");
+		System.out.println(" --------------");
+		System.out.println("1. Listar Tabla Mesas");
+		System.out.println("2. Listar Tabla Productos");
+		System.out.println("3. Listar Tabla Facturas");
+		System.out.println("4. Listar Tabla Pedidos");
+		System.out.println("0. Salir");
+		
+	}
+	
+	public static void listarTablas() {
+		
+		int opc = 0;
+		
+		do {
+			
+			menuListar();
+			System.out.println("Elija una opción: ");
+			opc = sc.nextInt();
+			
+			switch(opc) {
+				
+				case 1 ->{
+					
+					SubMenuConsultasMesas.listarTablaMesas();
+				}
+				
+				case 2 ->{
+					
+					SubMenuConsultasProductos.listarTablaProductos();
+				}
+				
+				case 3 ->{
+					
+					SubMenuConsultasFacturas.listarTablaFacturas();
+				}
+				
+				case 4 ->{
+					
+					SubMenuConsultasPedidos.listarTablaPedidos();
+				}
+				case 0 ->{
+					System.out.println("Saliendo del menú de listado");
 				}
 				default ->{
 					System.out.println("No se ha elegido una opción correcta");
