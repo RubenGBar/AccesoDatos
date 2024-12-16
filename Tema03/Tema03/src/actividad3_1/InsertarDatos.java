@@ -236,12 +236,12 @@ public class InsertarDatos {
 		System.out.println("Introduzca el id del producto a la que está asociado el pedido: ");
 		idProducto = sc.nextInt();
 		
-		System.out.println("Introduzca el precio del producto: ");
+		System.out.println("Introduzca la cantidad del pedido: ");
 		cantidad = sc.nextInt();
 		
 		try {
 			
-			insert = "INSERT INTO Pedidos (idPedidos, idFactura, idProducto, cantidad) VALUES (?, ?, ?, ?);";
+			insert = "INSERT INTO Pedidos (idPedido, idFactura, idProducto, cantidad) VALUES (?, ?, ?, ?);";
 			
 			PreparedStatement insertPedidos = conn.prepareStatement(insert);
 			

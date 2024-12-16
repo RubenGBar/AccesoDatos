@@ -2,7 +2,6 @@ package actividad3_1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -51,15 +50,15 @@ public class CRUD {
 				}
 				
 				case 4 ->{
-					
+					editarTablas();
 				}
 				
 				case 5 ->{
-					
+					borrarTablas();
 				}
 				
 				case 6 ->{
-					
+					eliminarTablas();
 				}
 				
 				case 0 ->{
@@ -173,12 +172,13 @@ public class CRUD {
 	public static void menuInsertar() {
 		
 		System.out.println(" --------------");
-		System.out.println("|    Inerta    |");
+		System.out.println("|    Inertar   |");
 		System.out.println(" --------------");
 		System.out.println("1. Insertar Tabla Mesas");
 		System.out.println("2. Insertar Tabla Productos");
 		System.out.println("3. Insertar Tabla Facturas");
 		System.out.println("4. Insertar Tabla Pedidos");
+		System.out.println("5. Rellenar Todas las Tablas");
 		System.out.println("0. Salir");
 		
 	}
@@ -197,8 +197,6 @@ public class CRUD {
 				
 				case 1 ->{
 					
-					InsertarDatos.iniciarTablaMesas(conn);
-					
 					if(InsertarDatos.insertarTablaMesas(conn)) {
 						System.out.println("Insert ejecutado correctamente");
 					} else {
@@ -209,8 +207,6 @@ public class CRUD {
 				
 				case 2 ->{
 					
-					InsertarDatos.iniciarTablaProductos(conn);
-					
 					if(InsertarDatos.insertarTablaProductos(conn)) {
 						System.out.println("Insert ejecutado correctamente");
 					} else {
@@ -219,8 +215,6 @@ public class CRUD {
 				}
 				
 				case 3 ->{
-					
-					InsertarDatos.iniciarTablaFacturas(conn);
 					
 					if(InsertarDatos.insertarTablaFacturas(conn)) {
 						System.out.println("Insert ejecutado correctamente");
@@ -231,13 +225,19 @@ public class CRUD {
 				
 				case 4 ->{
 					
-					InsertarDatos.iniciarTablaPedidos(conn);
-					
 					if(InsertarDatos.insertarTablaPedidos(conn)) {
 						System.out.println("Insert ejecutado correctamente");
 					} else {
 						System.out.println("No se ha podido ejecutar el insert");
 					}
+				}
+				case 5 ->{
+					
+					InsertarDatos.iniciarTablaMesas(conn);
+					InsertarDatos.iniciarTablaProductos(conn);
+					InsertarDatos.iniciarTablaFacturas(conn);
+					InsertarDatos.iniciarTablaPedidos(conn);
+					
 				}
 				case 0 ->{
 					System.out.println("Saliendo del menú insertar");
@@ -279,25 +279,241 @@ public class CRUD {
 				
 				case 1 ->{
 					
-					SubMenuConsultasMesas.listarTablaMesas();
+					MenuConsultas.listarTablaMesas();
 				}
 				
 				case 2 ->{
 					
-					SubMenuConsultasProductos.listarTablaProductos();
+					MenuConsultas.listarTablaProductos();
 				}
 				
 				case 3 ->{
 					
-					SubMenuConsultasFacturas.listarTablaFacturas();
+					MenuConsultas.listarTablaFacturas();
 				}
 				
 				case 4 ->{
 					
-					SubMenuConsultasPedidos.listarTablaPedidos();
+					MenuConsultas.listarTablaPedidos();
 				}
 				case 0 ->{
-					System.out.println("Saliendo del menú de listado");
+					System.out.println("Saliendo del menú de listar");
+				}
+				default ->{
+					System.out.println("No se ha elegido una opción correcta");
+				}
+				
+			}
+			
+		} while(opc != 0);
+		
+	}
+	
+	public static void menuEditar() {
+		
+		System.out.println(" --------------");
+		System.out.println("|    Editar    |");
+		System.out.println(" --------------");
+		System.out.println("1. Editar Tabla Mesas");
+		System.out.println("2. Editar Tabla Productos");
+		System.out.println("3. Editar Tabla Facturas");
+		System.out.println("4. Editar Tabla Pedidos");
+		System.out.println("0. Salir");
+		
+	}
+	
+	public static void editarTablas() {
+		
+		int opc = 0;
+		int id = 0;
+		
+		do {
+			
+			menuEditar();
+			System.out.println("Elija una opción: ");
+			opc = sc.nextInt();
+			
+			switch(opc) {
+				
+				case 1 ->{
+					
+					Consultas.listadoMesas(conn);
+					System.out.println("¿Qué Mesa quieres editar? Introduzca el ID por favor");
+					id = sc.nextInt();
+					sc.nextLine();
+					
+					Editar.editarTablaMesas(conn, id);
+				}
+				
+				case 2 ->{
+					
+					Consultas.listadoProductos(conn);
+					System.out.println("¿Qué Producto quieres editar? Introduzca el ID por favor");
+					id = sc.nextInt();
+					sc.nextLine();
+					
+					Editar.editarTablaProductos(conn, id);
+				}
+				
+				case 3 ->{
+					
+					Consultas.listadoFacturas(conn);
+					System.out.println("¿Qué Mesa quieres editar? Introduzca el ID por favor");
+					id = sc.nextInt();
+					sc.nextLine();
+					
+					Editar.editarTablaFacturas(conn, id);
+				}
+				
+				case 4 ->{
+					
+					Consultas.listadoPedidos(conn);
+					System.out.println("¿Qué Mesa quieres editar? Introduzca el ID por favor");
+					id = sc.nextInt();
+					sc.nextLine();
+					
+					Editar.editarTablaPedidos(conn, id);
+				}
+				case 0 ->{
+					System.out.println("Saliendo del menú de editar");
+				}
+				default ->{
+					System.out.println("No se ha elegido una opción correcta");
+				}
+				
+			}
+			
+		} while(opc != 0);
+		
+	}
+	
+	public static void menuBorrar() {
+		
+		System.out.println(" --------------");
+		System.out.println("|    Borrar    |");
+		System.out.println(" --------------");
+		System.out.println("1. Borrar Tabla Mesas");
+		System.out.println("2. Borrar Tabla Productos");
+		System.out.println("3. Borrar Tabla Facturas");
+		System.out.println("4. Borrar Tabla Pedidos");
+		System.out.println("5. Borrar Todas las Tablas");
+		System.out.println("0. Salir");
+		
+	}
+	
+	public static void borrarTablas() {
+		
+		int opc = 0;
+		
+		do {
+			
+			menuBorrar();
+			System.out.println("Elija una opción: ");
+			opc = sc.nextInt();
+			
+			switch(opc) {
+				
+				case 1 ->{
+					
+					MenuDeletes.borrarTablaMesas();
+				}
+				
+				case 2 ->{
+					
+					MenuDeletes.borrarTablaProductos();
+				}
+				
+				case 3 ->{
+					
+					MenuDeletes.borrarTablaFacturas();
+				}
+				
+				case 4 ->{
+					
+					MenuDeletes.borrarTablaPedidos();
+				}
+				case 5 ->{
+					
+					sc.nextLine();
+					Deletes.borradoPedidos(conn);
+					Deletes.borradoFacturas(conn);
+					Deletes.borradoProductos(conn);
+					Deletes.borradoMesas(conn);
+					
+				}
+				case 0 ->{
+					System.out.println("Saliendo del menú de borrar");
+				}
+				default ->{
+					System.out.println("No se ha elegido una opción correcta");
+				}
+				
+			}
+			
+		} while(opc != 0);
+		
+	}
+	
+	public static void menuEliminado() {
+		
+		System.out.println(" --------------");
+		System.out.println("|   Eliminar   |");
+		System.out.println(" --------------");
+		System.out.println("1. Eliminar Tabla Mesas");
+		System.out.println("2. Eliminar Tabla Productos");
+		System.out.println("3. Eliminar Tabla Facturas");
+		System.out.println("4. Eliminar Tabla Pedidos");
+		System.out.println("5. Eliminar Todas las Tablas");
+		System.out.println("0. Salir");
+		
+	}
+	
+	public static void eliminarTablas() {
+		
+		int opc = 0;
+		
+		do {
+			
+			menuBorrar();
+			System.out.println("Elija una opción: ");
+			opc = sc.nextInt();
+			
+			switch(opc) {
+				
+				case 1 ->{
+					
+					sc.nextLine();
+					Drops.eliminadoTablaMesas(conn);
+				}
+				
+				case 2 ->{
+					
+					sc.nextLine();
+					Drops.eliminadoTablaProductos(conn);
+				}
+				
+				case 3 ->{
+					
+					sc.nextLine();
+					Drops.eliminadoTablaFacturas(conn);
+				}
+				
+				case 4 ->{
+					
+					sc.nextLine();
+					Drops.eliminadoTablaPedidos(conn);
+				}
+				case 5 ->{
+					
+					sc.nextLine();
+					Drops.eliminadoTablaPedidos(conn);
+					Drops.eliminadoTablaProductos(conn);
+					Drops.eliminadoTablaFacturas(conn);
+					Drops.eliminadoTablaMesas(conn);
+					
+				}
+				case 0 ->{
+					System.out.println("Saliendo del menú de eliminar");
 				}
 				default ->{
 					System.out.println("No se ha elegido una opción correcta");
