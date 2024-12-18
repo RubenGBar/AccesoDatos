@@ -45,8 +45,7 @@ public class InsertarDatos {
 		} catch (IOException e) {
 			System.out.println("Ocurrió algún error");
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la insercion");
+			System.out.println("Fallo en la insercion. No existe la tabla");
 		}
 		
 	}
@@ -93,8 +92,7 @@ public class InsertarDatos {
 			insertFacturas.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la inserción");
+			System.out.println("Fallo en la insercion. No existe la tabla");
 		}
 		
 		return insertado;
@@ -131,8 +129,7 @@ public class InsertarDatos {
 		} catch (IOException e) {
 			System.out.println("Ocurrió algún error");
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la insercion");
+			System.out.println("Fallo en la insercion. No existe la tabla");
 		}
 		
 	}
@@ -174,8 +171,7 @@ public class InsertarDatos {
 			
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la inserción");
+			System.out.println("Fallo en la insercion. No existe la tabla");
 		}
 		
 		return insertado;
@@ -212,8 +208,7 @@ public class InsertarDatos {
 		} catch (IOException e) {
 			System.out.println("Ocurrió algún error");
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la insercion");
+			System.out.println("Fallo en la insercion. No existe la tabla");
 		}
 		
 	}
@@ -259,8 +254,7 @@ public class InsertarDatos {
 			insertPedidos.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la inserción");
+			System.out.println("Fallo en la insercion. No existe la tabla");
 		}
 		
 		return insertado;
@@ -297,8 +291,7 @@ public class InsertarDatos {
 		} catch (IOException e) {
 			System.out.println("Ocurrió algún error");
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la insercion");
+			System.out.println("Fallo en la insercion. No existe la tabla");
 		}
 		
 	}
@@ -340,8 +333,7 @@ public class InsertarDatos {
 			insertProductos.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la inserción");
+			System.out.println("Fallo en la insercion. No existe la tabla");
 		}
 		
 		return insertado;
