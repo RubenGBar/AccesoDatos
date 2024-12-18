@@ -42,13 +42,13 @@ public class Editar {
 					editMesa.executeUpdate();
 					
 					Transaccion.confirmarTransaccion(conn);
-					System.out.println("Se ha editado el ID de la mesa");
+					System.out.println("Se ha editado el número de comensales de la mesa");
 					
 					
 				}else {
 					
 					Transaccion.cancelarTransaccion(conn);
-					System.out.println("No se ha editado el ID de la mesa");
+					System.out.println("No se ha editado el número de comensales de la mesa");
 					
 				}
 				
@@ -95,8 +95,7 @@ public class Editar {
 			editMesa.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la inserción");
+			System.out.println("Fallo en la edición");
 		}
 		
 	}
@@ -189,8 +188,7 @@ public class Editar {
 			editProducto.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la inserción");
+			System.out.println("Fallo en la edición");
 		}
 		
 	}
@@ -320,8 +318,7 @@ public class Editar {
 			editFactura.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la inserción");
+			System.out.println("Fallo en la edición");
 		}
 		
 	}
@@ -330,7 +327,6 @@ public class Editar {
 		
 		int idFactura = 0;
 		int idProducto = 0;
-		int idMesa = 0;
 		int cantidad = 0;
 		String edit = "";
 		String modificar = "";
@@ -455,8 +451,7 @@ public class Editar {
 			editPedido.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("Fallo en la inserción");
+			System.out.println("Fallo en la edición");
 		}
 		
 	}

@@ -39,7 +39,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar porque porque hay resgistros asociados a una o varias facturas");
 	        }
 	    }
 	}
@@ -78,7 +78,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar porque porque hay resgistros asociados a una o varias facturas");
 	        }
 	    }
 	}
@@ -117,7 +117,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar porque porque hay resgistros asociados a una o varias facturas");
 	        }
 	    }
 	}
@@ -156,7 +156,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar porque porque hay resgistros asociados a una o varias facturas");
 	        }
 	    }
 	}
@@ -194,7 +194,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar el producto porque está asociado a un pedido");
 	        }
 	    }
 	}
@@ -233,7 +233,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar el producto porque está asociado a un pedido");
 	        }
 	    }
 	}
@@ -272,7 +272,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar el producto porque está asociado a un pedido");
 	        }
 	    }
 	}
@@ -311,7 +311,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar el producto porque está asociado a un pedido");
 	        }
 	    }
 	}
@@ -349,7 +349,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar la factura porque está asociada a un pedido");
 	        }
 	    }
 	}
@@ -388,7 +388,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar la factura porque está asociada a un pedido");
 	        }
 	    }
 	}
@@ -427,7 +427,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar la factura porque está asociada a un pedido");
 	        }
 	    }
 	}
@@ -466,7 +466,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar la factura porque está asociada a un pedido");
 	        }
 	    }
 	}
@@ -505,7 +505,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar la factura porque está asociada a un pedido");
 	        }
 	    }
 	}
@@ -543,7 +543,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar el pedido");
 	        }
 	    }
 	}
@@ -582,7 +582,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar el pedido");
 	        }
 	    }
 	}
@@ -621,7 +621,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar el pedido");
 	        }
 	    }
 	}
@@ -660,7 +660,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar el pedido");
 	        }
 	    }
 	}
@@ -699,7 +699,7 @@ public class Deletes {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar el pedido");
 	        }
 	    }
 	}

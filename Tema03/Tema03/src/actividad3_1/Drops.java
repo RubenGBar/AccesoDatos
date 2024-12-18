@@ -34,12 +34,12 @@ public class Drops {
 	    	}
 	        
 	    } catch (SQLException e) {
-	        System.out.println("No se ha podido eliminar porque porque hay resgistros asociados a una o varias facturas");
+	        System.out.println("No se ha podido eliminar porque porque hay campos asociados a una o varias facturas");
 	    } finally {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar porque porque hay campos asociados a una o varias facturas");
 	        }
 	    }
 	}
@@ -72,12 +72,12 @@ public class Drops {
 	    	}
 	        
 	    } catch (SQLException e) {
-	        System.out.println("No se ha podido eliminar porque porque hay resgistros asociados a uno o varias pedidos");
+	        System.out.println("No se ha podido eliminar porque porque hay campos asociados a uno o varias pedidos");
 	    } finally {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar porque porque hay campos asociados a uno o varias pedidos");
 	        }
 	    }
 	}
@@ -110,12 +110,12 @@ public class Drops {
 	    	}
 	        
 	    } catch (SQLException e) {
-	        System.out.println("No se ha podido eliminar porque porque hay resgistros asociados a uno o varias pedidos");
+	        System.out.println("No se ha podido eliminar porque porque hay campos asociados a uno o varias pedidos");
 	    } finally {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar porque porque hay campos asociados a uno o varias pedidos");
 	        }
 	    }
 	}
@@ -148,12 +148,12 @@ public class Drops {
 	    	}
 	        
 	    } catch (SQLException e) {
-	        System.out.println("No se ha podido eliminar porque porque hay resgistros asociados a uno o varias pedidos");
+	        System.out.println("No se ha podido eliminar");
 	    } finally {
 	        try {
 	            query.close();
 	        } catch (SQLException e) {
-	            System.out.println(e);
+	        	System.out.println("No se ha podido eliminar");
 	        }
 	    }
 	}
