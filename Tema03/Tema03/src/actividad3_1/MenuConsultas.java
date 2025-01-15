@@ -15,7 +15,11 @@ public class MenuConsultas {
 		System.out.println("0. Salir");
 		
 	}
+<<<<<<< Updated upstream
 
+=======
+	
+>>>>>>> Stashed changes
 	public static void listarTablaFacturas() {
 		
 		int opc = 0;
@@ -53,7 +57,11 @@ public class MenuConsultas {
 				case 4 ->{
 					
 					CRUD.sc.nextLine();
+<<<<<<< Updated upstream
 					System.out.println("¿Por qué tipo de pago quiere listar?");
+=======
+					System.out.println("¿Por qué tipo de pago quieres listar?");
+>>>>>>> Stashed changes
 					tipoPago = CRUD.sc.nextLine();
 					Consultas.listadoFacturasPorTipoPago(CRUD.conn, tipoPago);
 				}
@@ -61,7 +69,11 @@ public class MenuConsultas {
 					
 					System.out.println("¿Por qué importe (dinero) quiere listar?");
 					importe = CRUD.sc.nextDouble();
+<<<<<<< Updated upstream
 					Consultas.listadoFacturasPorImporte(CRUD.conn, importe);
+=======
+					Consultas.listadoFacturasPorImporte(null, importe);
+>>>>>>> Stashed changes
 				}
 				case 0 ->{
 					System.out.println("Saliendo del menú de listado de Facturas");
@@ -119,7 +131,11 @@ public class MenuConsultas {
 					
 					System.out.println("¿Por qué cantidad de comensales quieres buscar?");
 					dato = CRUD.sc.nextInt();
+<<<<<<< Updated upstream
 					Consultas.listadoMesasPorComensales(CRUD.conn, dato);
+=======
+					Consultas.listadoMesasPorId(CRUD.conn, dato);
+>>>>>>> Stashed changes
 				}
 				
 				case 4 ->{

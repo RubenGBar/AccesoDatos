@@ -1,4 +1,5 @@
 INDEX VERSION 1.134+C:\Users\rgarcia\Desktop\Repositorios\AccesoDatos\Tema05\.metadata\.plugins\org.eclipse.jdt.core
+<<<<<<< HEAD
 1465238026.index
 1435730601.index
 1016628538.index
@@ -8,6 +9,17 @@ INDEX VERSION 1.134+C:\Users\rgarcia\Desktop\Repositorios\AccesoDatos\Tema05\.me
 4193784985.index
 3648763408.index
 1611001159.index
+=======
+2353467399.index
+1435730601.index
+1016628538.index
+2950188162.index
+628697921.index
+1865797976.index
+4193784985.index
+1611001159.index
+3648763408.index
+>>>>>>> origin/main
 1871298337.index
 3968425215.index
 2476075218.index
@@ -19,10 +31,19 @@ INDEX VERSION 1.134+C:\Users\rgarcia\Desktop\Repositorios\AccesoDatos\Tema05\.me
 2015916259.index
 1694811065.index
 3193278824.index
+<<<<<<< HEAD
 628697921.index
+=======
+>>>>>>> origin/main
 745086246.index
 1431068888.index
 657617084.index
 1409505405.index
+<<<<<<< HEAD
 2353467399.index
 1712621557.index
+=======
+1712621557.index
+1465238026.index
+740070830.index
+>>>>>>> origin/main

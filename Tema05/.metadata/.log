@@ -7607,6 +7607,7 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.ui.navigator 2 0 2025-01-10 13:44:36.325
 !MESSAGE Can't find Navigator Content Descriptor with id: org.eclipse.jst.servlet.ui.EnhancedJavaRendering
+<<<<<<< HEAD
 !SESSION 2025-01-15 08:52:27.615 -----------------------------------------------
 eclipse.buildId=4.33.0.20240905-0613
 java.version=22.0.2
@@ -7648,3 +7649,5 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2025-01-15 09:45:39.714
 !MESSAGE The given URI http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_1.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+=======
+>>>>>>> origin/main

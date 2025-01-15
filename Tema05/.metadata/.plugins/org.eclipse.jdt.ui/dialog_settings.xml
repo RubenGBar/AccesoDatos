@@ -13,6 +13,7 @@
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
+<<<<<<< HEAD
 	<section name="NewClassCreationWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="697"/>
 		<item key="DIALOG_Y_ORIGIN" value="99"/>
@@ -27,4 +28,6 @@
 		<item key="create_constructor" value="false"/>
 		<item key="create_unimplemented" value="true"/>
 	</section>
+=======
+>>>>>>> origin/main
 </section>
