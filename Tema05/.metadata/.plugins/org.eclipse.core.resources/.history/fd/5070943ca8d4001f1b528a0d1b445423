@@ -1,0 +1,13 @@
+
+public class CRUD {
+
+	public static boolean crearPersona() {
+		
+		boolean creado = false;
+		
+		
+		return creado;
+		
+	}
+	
+}

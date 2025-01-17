@@ -1,0 +1,30 @@
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+public class FuncionesHibernate {
+	
+	private static SessionFactory sessionFactory = null;
+	
+    private static void guardar(EntidadPersona persona) {
+        //PersonasEntity persona = new PersonasEntity("Pocholo", "H");
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        int id = (int) session.save(persona);
+        transaction.commit();
+        System.out.println(id);
+        sessionFactory.close();
+    }
+	
+    private static void leer(int id) throws Exception {
+    	   Session session = sessionFactory.openSession();
+    	   Transaction transaction=session.beginTransaction();
+    	   EntidadPersona persona = session.load(EntidadPersona.class, id);
+    	   System.out.println("ID: " + persona.getIdPersona());
+    	   System.out.println("Nombre: " + persona.getNombre());
+    	   System.out.println("Saldo: " + persona.getSaldo());
+    	   transaction.commit();
+    	   sessionFactory.close();
+    	}
+	
+}
