@@ -1,0 +1,67 @@
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+public class FuncionesHibernate {
+	
+	private static Session sesion = Principal.instancia.sesion;
+	private static Transaction transaction = Principal.instancia.transaction;
+
+	public static void guardar(EntidadPersona persona) throws Exception {
+		Principal.instancia.abrir();
+		int id = (int) sesion.save(persona);
+		transaction.commit();
+		System.out.println(id);
+		sesion.close();
+	}
+
+	public static void listarUnaPersonaPorID(int id) throws Exception {
+		Principal.instancia.abrir();
+		EntidadPersona persona = sesion.load(EntidadPersona.class, id);
+		System.out.println("ID: " + persona.getIdPersona());
+		System.out.println("Nombre: " + persona.getNombre());
+		System.out.println("Saldo: " + persona.getSaldo());
+		transaction.commit();
+		sesion.close();
+	}
+
+	public static void listarUnaPersonaPorNombre(String nombre) throws Exception {
+		Principal.instancia.abrir();
+		EntidadPersona persona = sesion.load(EntidadPersona.class, nombre);
+		System.out.println("ID: " + persona.getIdPersona());
+		System.out.println("Nombre: " + persona.getNombre());
+		System.out.println("Saldo: " + persona.getSaldo());
+		transaction.commit();
+		sesion.close();
+	}
+
+	public static void listarTodasLasPersona() throws Exception {
+		Principal.instancia.abrir();
+		List<EntidadPersona> personas = sesion.createQuery("FROM EntidadPersona").list();
+		for (EntidadPersona persona : personas) {
+			System.out.println("ID: " + persona.getIdPersona());
+			System.out.println("Nombre: " + persona.getNombre());
+			System.out.println("Saldo: " + persona.getSaldo());
+		}
+		transaction.commit();
+		sesion.close();
+	}
+
+	public static void actualizar(EntidadPersona persona) throws Exception {
+		Principal.instancia.abrir();
+		sesion.update(persona);
+		transaction.commit();
+		sesion.close();
+	}
+
+	public static void borrar(int id) throws Exception {
+		Principal.instancia.abrir();
+		EntidadPersona persona = sesion.load(EntidadPersona.class, id);
+		sesion.delete(persona);
+		transaction.commit();
+		sesion.close();
+	}
+
+}

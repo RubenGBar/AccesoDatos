@@ -1,0 +1,66 @@
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+public class FuncionesHibernate {
+	
+	private static Accesobd instancia = new Accesobd();
+
+	public static void guardar(EntidadPersona persona) throws Exception {
+		instancia.abrir();
+		int id = (int) Accesobd.sesion.save(persona);
+		Accesobd.transaction.commit();
+		System.out.println(id);
+		Accesobd.sesion.close();
+	}
+
+	public static void listarUnaPersonaPorID(int id) throws Exception {
+		instancia.abrir();
+		EntidadPersona persona = Accesobd.sesion.load(EntidadPersona.class, id);
+		System.out.println("ID: " + persona.getIdPersona());
+		System.out.println("Nombre: " + persona.getNombre());
+		System.out.println("Saldo: " + persona.getSaldo());
+		Accesobd.transaction.commit();
+		Accesobd.sesion.close();
+	}
+
+	public static void listarUnaPersonaPorNombre(String nombre) throws Exception {
+		instancia.abrir();
+		EntidadPersona persona = Accesobd.sesion.load(EntidadPersona.class, nombre);
+		System.out.println("ID: " + persona.getIdPersona());
+		System.out.println("Nombre: " + persona.getNombre());
+		System.out.println("Saldo: " + persona.getSaldo());
+		Accesobd.transaction.commit();
+		Accesobd.sesion.close();
+	}
+
+	public static void listarTodasLasPersona() throws Exception {
+		instancia.abrir();
+		List<EntidadPersona> personas = Accesobd.sesion.createQuery("FROM EntidadPersona").list();
+		for (EntidadPersona persona : personas) {
+			System.out.println("ID: " + persona.getIdPersona());
+			System.out.println("Nombre: " + persona.getNombre());
+			System.out.println("Saldo: " + persona.getSaldo());
+		}
+		Accesobd.transaction.commit();
+		Accesobd.sesion.close();
+	}
+
+	public static void actualizar(EntidadPersona persona) throws Exception {
+		instancia.abrir();
+		Accesobd.sesion.update(persona);
+		Accesobd.transaction.commit();
+		Accesobd.sesion.close();
+	}
+
+	public static void borrar(int id) throws Exception {
+		instancia.abrir();
+		EntidadPersona persona = Accesobd.sesion.load(EntidadPersona.class, id);
+		Accesobd.sesion.delete(persona);
+		Accesobd.transaction.commit();
+		Accesobd.sesion.close();
+	}
+
+}

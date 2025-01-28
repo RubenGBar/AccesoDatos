@@ -1,0 +1,331 @@
+import org.hibernate.Session;
+import org.jboss.logging.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.logging.Level;
+
+public class Principal {
+	
+    public static Scanner sc = new Scanner(System.in);
+    
+    public static void main(String[] args) throws Exception {
+    	
+        int opc = -1;
+        
+        do {
+        
+        	menu();
+        	System.out.println("Elija una opción");
+        	opc = sc.nextInt();
+        	
+        	switch(opc) {
+        	
+	        	case 1 :{
+	        		
+	        		sc.nextLine();
+	        		agregarPersona();
+	        		
+        		break;
+	        	}
+	        	
+	        	case 2 :{
+		        	
+	        		obtencionPersona();
+	        		
+        		break;
+        		}
+	        	
+	        	case 3 :{
+		        	
+	        		editarPersona();
+	        		
+        		break;
+	        	}
+	        	
+	        	case 4 :{
+		        	
+	        		borrarPersona();
+	        		
+        		break;
+	        	}
+	        	
+	        	case 0 :{
+		        	
+	        		
+	        		
+        		break;
+	        	}
+	        	
+	        	default :{
+	        		
+		        	System.out.println("Opción no válida");
+		        	
+        		break;
+	        	}
+        	
+        	}
+        	
+        }while (opc != 0);
+        System.out.println("Saliendo del programa");
+        
+        sc.close();
+        
+        //ejemplo1a1();
+        //ejemplo1a1bi();
+        //ejemplo1amuchos();
+    }
+    
+    public static void menu() {
+    	
+    	System.out.println(" -------------------");
+    	System.out.println("|       Menú        |");
+    	System.out.println(" -------------------");
+    	System.out.println("1. Añadir Persona");
+    	System.out.println("2. Obtener Persona");
+    	System.out.println("3. Editar Persona");
+    	System.out.println("4. Eliminar Persona");
+    	System.out.println("0. Salir");
+    	
+    }
+    
+    public static EntidadPersona pedirDatosCrear() {
+		
+		String nombre = "";
+		double saldo = 0;
+		EntidadPersona persona = null;
+		
+		System.out.println("Introduzca el nombre de la persona: ");
+		nombre = sc.nextLine();
+		
+		System.out.println("Introduzca el saldo de la persona: ");
+		saldo = sc.nextDouble();
+		
+		persona = new EntidadPersona(nombre, saldo);
+		
+		return persona;
+		
+	}
+    
+    public static void agregarPersona() {
+    	
+    	EntidadPersona persona = pedirDatosCrear();
+    	
+    	try {
+    		
+			FuncionesHibernate.guardar(persona);
+			
+		} catch (Exception e) {
+			
+			System.out.println(e);
+			
+		}
+    	
+    }
+    
+    public static void menuElegir() {
+    	
+    	System.out.println(" -------------------");
+    	System.out.println("|     Obtener       |");
+    	System.out.println(" -------------------");
+    	System.out.println("1. Obtener Todas las Personas");
+    	System.out.println("2. Obtener Persona por Nombre");
+    	System.out.println("0. Salir");
+    	
+    }
+    
+    public static void obtencionPersona() {
+    	
+    	String nombre = "";
+    	int opc = -1;
+    	
+    	do {
+    		
+    		menuElegir();
+    		
+    		opc = sc.nextInt();
+    		
+    		switch(opc) {
+    		
+	    		case 1 :{
+	    			
+	    			try {
+	    				
+						FuncionesHibernate.listarTodasLasPersona();
+						
+					} catch (Exception e) {
+						
+						System.out.println(e);
+						
+					}
+	    			
+	    		break;
+	    		}
+	    		
+	    		case 2 :{
+	    			
+	    			sc.nextLine();
+	    			System.out.println("Introduzca el nombre de la persona a buscar");
+	    			
+	    			nombre = sc.nextLine();
+	    			
+	    			try {
+						
+	    				FuncionesHibernate.listarPersonaPorNombre2(nombre);
+	    				
+					} catch (Exception e) {
+						
+						System.out.println(e);
+						
+					}
+	    			
+	    		break;
+	    		}
+	    		
+	    		case 0 :{
+		        	
+	        		
+	        		
+        		break;
+	        	}
+	    		
+	    		default :{
+	    			
+	    			System.out.println("Opción no válida");
+	    			
+	    		}
+    		
+    		}
+    		
+    	}while(opc != 0);
+    	
+    }
+    
+    public static void editarPersona() {
+    	
+    	int id = -1;
+    	String nombre = "";
+    	double saldo = 0;
+    	String editar = "";
+    	EntidadPersona persona;
+    	
+    	try {
+			
+			FuncionesHibernate.listarTodasLasPersona();
+			
+			System.out.println("Introduca el id de la persona a editar");
+			id = sc.nextInt();
+			sc.nextLine();
+			
+			System.out.println("¿Quierés editar el nombre de la persona?(Si/No)");
+			editar = sc.nextLine();
+			
+			if(editar.equalsIgnoreCase("Si")) {
+				
+				System.out.println("Introduzca el nuevo nombre de la persona");
+				nombre = sc.nextLine();
+				
+			}else {
+				
+				System.out.println("No se editará el nombre");
+				
+			}
+			
+			System.out.println("¿Quierés editar el saldo de la persona?(Si/No)");
+			editar = sc.nextLine();
+			
+			if(editar.equalsIgnoreCase("Si")) {
+				
+				System.out.println("Introduzca el nuevo saldo de la persona");
+				saldo = sc.nextDouble();
+				
+			}else {
+				
+				System.out.println("No se editará el nombre");
+				sc.nextLine();
+				
+			}
+			
+		} catch (Exception e) {
+			
+			System.out.println(e);
+			
+		}
+    	
+    	persona = new EntidadPersona(nombre, saldo);
+    	
+    	try {
+    		
+			FuncionesHibernate.actualizar(id, persona);
+			
+		} catch (Exception e) {
+			
+			System.out.println(e);
+			
+		}
+    	
+    }
+    
+    public static void borrarPersona() {
+    	
+    	int id = 0;
+    	
+    	try {
+    		
+			FuncionesHibernate.listarTodasLasPersona();
+			
+			System.out.println("Introduzca el id de la persona a borrar");
+
+			id = sc.nextInt();
+
+			FuncionesHibernate.borrar(id);
+
+		} catch (Exception e) {
+
+			System.out.println(e);
+
+		}
+
+	}
+    
+//
+//    private static void ejemplo1amuchos() throws Exception {
+//        Alumnado alumnado=new Alumnado(9, "Rosa", "Díaz", "Del Toro");
+//        List<Email> email=new ArrayList<>();
+//        email.add(new Email(3, "rosa@yahoo.com",alumnado));
+//        email.add(new Email(2, "rosa@hotmail.com",alumnado));
+//        email.add(new Email(1, "rosa@gmail.com",alumnado));
+//
+//        alumnado.setEmails(email);
+//        guardar(alumnado);
+//    }
+//
+//    private static void ejemplo1a1bi() throws Exception {
+//        Direccion direccion1=new Direccion(3, "Calle de la sarten", 23, "Manises", "Valencia");
+//        Alumnado alumnado1=new Alumnado(3, "Sergio", "Mateo", "Ramis");
+//        alumnado1.setDireccion(direccion1);
+//        direccion1.setAlumnado(alumnado1);
+//        Direccion direccion2=new Direccion(4, "Calle Luis lamarca", 45, "Torrente", "Valencia");
+//        Alumnado alumnado2=new Alumnado(4, "Paco", "Moreno", "Díaz");
+//        alumnado2.setDireccion(direccion2);
+//        direccion2.setAlumnado(alumnado2);
+//        guardar(alumnado1);
+//        guardar(direccion2);
+//    }
+//
+//    private static void ejemplo1a1() throws Exception {
+//        Direccion direccion=new Direccion(1, "Plaza del ayuntamiento", 8, "Xativa", "Valencia");
+//        Alumnado alumnado=new Alumnado(1, "Juan", "Perez", "García");
+//        alumnado.setDireccion(direccion);
+//        guardar(alumnado);
+//    }
+//
+//    private static void guardar(Object cosa) throws Exception {
+//        instancia.abrir();
+//        int id = (int) instancia.guardar(cosa);
+//        System.out.println(id);
+//        instancia.cerrar();
+//    }
+
+}
