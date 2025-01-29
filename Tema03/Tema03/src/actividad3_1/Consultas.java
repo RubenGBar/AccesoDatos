@@ -7,9 +7,8 @@ import java.sql.SQLException;
 
 public class Consultas {
 
-<<<<<<< Updated upstream
-=======
-	public static void listadoFacturas(Connection conn) {
+
+	/*public static void listadoFacturas(Connection conn) {
 	    ResultSet lista = null;
 	    PreparedStatement listaComlpeta = null;
 	    try {
@@ -131,18 +130,17 @@ public class Consultas {
 	            System.out.println(e);
 	        }
 	    }
-	}
+	}*/
 
->>>>>>> Stashed changes
 	public static void listadoMesas(Connection conn) {
 	    ResultSet lista = null;
 	    PreparedStatement listaComlpeta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaComlpeta = conn.prepareStatement("SELECT * FROM Mesas;");
-=======
+
 	        listaComlpeta = conn.prepareStatement("SELECT * FROM Mesas");
->>>>>>> Stashed changes
+
 	        lista = listaComlpeta.executeQuery();
 	        while(lista.next()) {
 	            System.out.println("ID: " + lista.getInt("idMesa") + " ");
@@ -165,11 +163,11 @@ public class Consultas {
 	    ResultSet lista = null;
 	    PreparedStatement listaCompleta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Mesas WHERE idMesa = ?;");
-=======
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Mesas WHERE idMesa = ?");
->>>>>>> Stashed changes
+
 	        listaCompleta.setInt(1, compara);
 	        lista = listaCompleta.executeQuery();
 	        while(lista.next()) {
@@ -193,11 +191,11 @@ public class Consultas {
 	    ResultSet lista = null;
 	    PreparedStatement listaCompleta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Mesas WHERE numComensales = ?;");
-=======
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Mesas WHERE numComensales = ?");
->>>>>>> Stashed changes
+
 	        listaCompleta.setInt(1, compara);
 	        lista = listaCompleta.executeQuery();
 	        while(lista.next()) {
@@ -225,11 +223,11 @@ public class Consultas {
 	    	reservado = 1;
 	    }
 	    try {
-<<<<<<< Updated upstream
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Mesas WHERE reserva = ?;");
-=======
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Mesas WHERE reserva = ?");
->>>>>>> Stashed changes
+
 	        listaCompleta.setInt(1, reservado);
 	        lista = listaCompleta.executeQuery();
 	        while(lista.next()) {
@@ -249,7 +247,7 @@ public class Consultas {
 	    }
 	}
 
-<<<<<<< Updated upstream
+
 	public static void listadoFacturas(Connection conn) {
 	    ResultSet lista = null;
 	    PreparedStatement listaComlpeta = null;
@@ -374,17 +372,16 @@ public class Consultas {
 	    }
 	}
 
-=======
->>>>>>> Stashed changes
+
 	public static void listadoPedidos(Connection conn) {
 	    ResultSet lista = null;
 	    PreparedStatement listaComlpeta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaComlpeta = conn.prepareStatement("SELECT * FROM Pedidos;");
-=======
+
 	        listaComlpeta = conn.prepareStatement("SELECT * FROM Pedidos");
->>>>>>> Stashed changes
+
 	        lista = listaComlpeta.executeQuery();
 	        while(lista.next()) {
 	            System.out.println("ID: " + lista.getInt("idPedido") + " ");
@@ -408,11 +405,11 @@ public class Consultas {
 	    ResultSet lista = null;
 	    PreparedStatement listaCompleta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Facturas WHERE idPedido = ?;");
-=======
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Facturas WHERE idPedido = ?");
->>>>>>> Stashed changes
+
 	        listaCompleta.setInt(1, compara);
 	        lista = listaCompleta.executeQuery();
 	        while(lista.next()) {
@@ -437,11 +434,11 @@ public class Consultas {
 	    ResultSet lista = null;
 	    PreparedStatement listaCompleta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Facturas WHERE idFactura = ?;");
-=======
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Facturas WHERE idFactura = ?");
->>>>>>> Stashed changes
+
 	        listaCompleta.setInt(1, compara);
 	        lista = listaCompleta.executeQuery();
 	        while(lista.next()) {
@@ -466,11 +463,11 @@ public class Consultas {
 	    ResultSet lista = null;
 	    PreparedStatement listaCompleta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Facturas WHERE idProducto = ?;");
-=======
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Facturas WHERE idProducto = ?");
->>>>>>> Stashed changes
+
 	        listaCompleta.setInt(1, compara);
 	        lista = listaCompleta.executeQuery();
 	        while(lista.next()) {
@@ -495,11 +492,11 @@ public class Consultas {
 	    ResultSet lista = null;
 	    PreparedStatement listaCompleta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Facturas WHERE cantidad = ?;");
-=======
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Facturas WHERE cantidad = ?");
->>>>>>> Stashed changes
+
 	        listaCompleta.setInt(1, cantidad);
 	        lista = listaCompleta.executeQuery();
 	        while(lista.next()) {
@@ -524,11 +521,11 @@ public class Consultas {
 	    ResultSet lista = null;
 	    PreparedStatement listaComlpeta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaComlpeta = conn.prepareStatement("SELECT * FROM Productos;");
-=======
+
 	        listaComlpeta = conn.prepareStatement("SELECT * FROM Productos");
->>>>>>> Stashed changes
+
 	        lista = listaComlpeta.executeQuery();
 	        while(lista.next()) {
 	            System.out.println("ID: " + lista.getInt("idProducto") + " ");
@@ -551,11 +548,11 @@ public class Consultas {
 	    ResultSet lista = null;
 	    PreparedStatement listaCompleta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Productos WHERE idProducto = ?;");
-=======
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Productos WHERE idProducto = ?");
->>>>>>> Stashed changes
+
 	        listaCompleta.setInt(1, compara);
 	        lista = listaCompleta.executeQuery();
 	        while(lista.next()) {
@@ -579,11 +576,11 @@ public class Consultas {
 	    ResultSet lista = null;
 	    PreparedStatement listaCompleta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Productos WHERE Denominacion = ?;");
-=======
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Productos WHERE Denominacion = ?");
->>>>>>> Stashed changes
+
 	        listaCompleta.setString(1, Denominacion);
 	        lista = listaCompleta.executeQuery();
 	        while(lista.next()) {
@@ -607,11 +604,11 @@ public class Consultas {
 	    ResultSet lista = null;
 	    PreparedStatement listaCompleta = null;
 	    try {
-<<<<<<< Updated upstream
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Mesas WHERE precio = ?;");
-=======
+
 	        listaCompleta = conn.prepareStatement("SELECT * FROM Mesas WHERE precio = ?");
->>>>>>> Stashed changes
+
 	        listaCompleta.setDouble(1, precio);
 	        lista = listaCompleta.executeQuery();
 	        while(lista.next()) {
