@@ -1,3 +1,5 @@
+package clasesManipulacion;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -41,4 +43,5 @@ public class Accesobd {
     public void guardar(Object cosa) {
         sesion.persist(cosa);
     }
+
 }
