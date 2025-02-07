@@ -1,5 +1,5 @@
 package Entidades;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Facturas")
@@ -10,7 +10,7 @@ public class ENTFactura {
     @Column(name="idFactura")
     private int idFactura;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "idMesa", nullable = false)
     private ENTMesa mesa;
     @Column(name = "tipoPago")

@@ -1,6 +1,5 @@
 package Entidades;
-import javax.persistence.*;
-import java.io.Serializable;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Productos")
