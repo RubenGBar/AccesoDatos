@@ -11,7 +11,7 @@ public class ENTFactura {
     private int idFactura;
 
     @ManyToOne
-    @JoinColumn(name = "idMesa", nullable = false)
+    @JoinColumn(name = "idMesa", nullable = false, foreignKey = @ForeignKey(name = "Facturas_ibfk_1"))
     private ENTMesa mesa;
     @Column(name = "tipoPago")
     private String tipoPago;

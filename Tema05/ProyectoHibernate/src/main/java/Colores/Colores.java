@@ -11,4 +11,10 @@ public class Colores {
 
     public static String blanco = "\033[37m";
 
+    public static String azul = "\033[34m";
+
+    public static String magenta = "\033[35m";
+
+    public static String cyan = "\033[36m";
+
 }
