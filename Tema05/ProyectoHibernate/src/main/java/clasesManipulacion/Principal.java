@@ -18,12 +18,12 @@ public class Principal {
         System.out.println(Colores.verde + " --------------");
         System.out.println(Colores.verde + "|     Menú     |");
         System.out.println(Colores.verde + " --------------");
-        System.out.println(Colores.amarillo + "1." + Colores.blanco + "Insertar Datos");
-        System.out.println(Colores.amarillo + "2." + Colores.blanco + "Listar Datos");
-        System.out.println(Colores.amarillo + "3." + Colores.blanco + "Modificar Datos");
-        System.out.println(Colores.amarillo + "4." + Colores.blanco + "Borrar Datos");
-        System.out.println(Colores.amarillo + "5." + Colores.blanco + "Borrar Tablas");
-        System.out.println(Colores.rojo + "0." + Colores.blanco + "Salir");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Insertar Datos");
+        System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Listar Datos");
+        System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Editar Datos");
+        System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Borrar Datos");
+        System.out.println(Colores.amarillo + "5. " + Colores.blanco + "Borrar Tablas");
+        System.out.println(Colores.rojo + "0. " + Colores.blanco + "Salir");
     }
 
     public static void main(String[] args) throws Exception {
@@ -53,13 +53,19 @@ public class Principal {
 
                 case 3 ->{
 
-                    System.out.println();
+                    editar();
 
                 }
 
                 case 4 ->{
 
                     System.out.println("a");
+
+                }
+
+                case 5 ->{
+
+                    System.out.println("e");
 
                 }
 
@@ -87,11 +93,11 @@ public class Principal {
         System.out.println(Colores.verde + " --------------");
         System.out.println(Colores.verde + "|    Agregar   |");
         System.out.println(Colores.verde + " --------------");
-        System.out.println(Colores.amarillo + "1." + Colores.blanco + "Agregar Mesa");
-        System.out.println(Colores.amarillo + "2." + Colores.blanco + "Agregar Producto");
-        System.out.println(Colores.amarillo + "3." + Colores.blanco + "Agregar Factura");
-        System.out.println(Colores.amarillo + "4." + Colores.blanco + "Agregar Pedido");
-        System.out.println(Colores.rojo + "0." + Colores.blanco + "Salir");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Agregar Mesa");
+        System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Agregar Producto");
+        System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Agregar Factura");
+        System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Agregar Pedido");
+        System.out.println(Colores.rojo + "0. " + Colores.blanco + "Salir Menú Agregar");
     }
 
     public static void agregar() throws Exception {
@@ -205,11 +211,11 @@ public class Principal {
         System.out.println(Colores.verde + " --------------");
         System.out.println(Colores.verde + "|    Listar    |");
         System.out.println(Colores.verde + " --------------");
-        System.out.println(Colores.amarillo + "1." + Colores.blanco + "Listar Mesa");
-        System.out.println(Colores.amarillo + "2." + Colores.blanco + "Listar Producto");
-        System.out.println(Colores.amarillo + "3." + Colores.blanco + "Listar Factura");
-        System.out.println(Colores.amarillo + "4." + Colores.blanco + "Listar Pedido");
-        System.out.println(Colores.rojo + "0." + Colores.blanco + "Salir");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Listar Mesa");
+        System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Listar Producto");
+        System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Listar Factura");
+        System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Listar Pedido");
+        System.out.println(Colores.rojo + "0. " + Colores.blanco + "Salir Menú Listar");
     }
 
     public static void listar(){
@@ -253,4 +259,58 @@ public class Principal {
         }while (opc != 0);
 
     }
+
+    public static void menuEditar() {
+        System.out.println(Colores.verde + " --------------");
+        System.out.println(Colores.verde + "|    Editar    |");
+        System.out.println(Colores.verde + " --------------");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Editar Mesa");
+        System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Editar Producto");
+        System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Editar Factura");
+        System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Editar Pedido");
+        System.out.println(Colores.rojo + "0. " + Colores.blanco + "Salir Menú Editar");
+    }
+
+    public static void editar(){
+
+        int opc = -1;
+
+        do {
+
+            menuEditar();
+            System.out.println("Elija una opción");
+            opc = sc.nextInt();
+
+            switch (opc){
+
+                case 1 ->{
+                    Editar.editarMesa();
+                }
+
+                case 2 ->{
+                    Editar.editarProducto();
+                }
+
+                case 3 ->{
+                    Editar.editarFactura();
+                }
+
+                case 4 ->{
+                    Editar.editarPedido();
+                }
+
+                case 0 ->{
+                    System.out.println("Saliendo del Menú editar");
+                }
+
+                default ->{
+                    System.out.println(Colores.rojo + "Opción no válida" + Colores.blanco);
+                }
+
+            }
+
+        }while (opc != 0);
+
+    }
+
 }

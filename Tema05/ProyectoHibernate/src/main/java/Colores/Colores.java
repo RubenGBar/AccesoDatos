@@ -17,4 +17,6 @@ public class Colores {
 
     public static String cyan = "\033[36m";
 
+    public static String naranja = "\033[38;5;208m";
+
 }

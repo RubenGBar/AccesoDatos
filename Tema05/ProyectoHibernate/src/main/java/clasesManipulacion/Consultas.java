@@ -6,7 +6,6 @@ import Entidades.ENTMesa;
 import Entidades.ENTPedido;
 import Entidades.ENTProducto;
 
-import java.awt.*;
 import java.util.List;
 
 public class Consultas {
@@ -60,7 +59,7 @@ public class Consultas {
         Accesobd.sesion.close();
     }
 
-    public static void listarTodasLosProductos() throws Exception {
+    public static void listarTodosLosProductos() throws Exception {
         instancia.abrir();
         List<ENTProducto> productos = Accesobd.sesion.createQuery("From ENTProducto ", ENTProducto.class).list();
         for (ENTProducto producto : productos) {
@@ -239,11 +238,11 @@ public class Consultas {
         System.out.println(Colores.verde + " --------------");
         System.out.println(Colores.verde + "|     Mesa     |");
         System.out.println(Colores.verde + " --------------");
-        System.out.println(Colores.amarillo + "1." + Colores.blanco + "Listar Todas las Mesas");
-        System.out.println(Colores.amarillo + "2." + Colores.blanco + "Listar Mesa por ID");
-        System.out.println(Colores.amarillo + "3." + Colores.blanco + "Listar Mesa por Número de Comensales");
-        System.out.println(Colores.amarillo + "4." + Colores.blanco + "Listar Mesa por Reserva");
-        System.out.println(Colores.rojo + "0." + Colores.blanco + "Salir");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Listar Todas las Mesas");
+        System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Listar Mesa por ID");
+        System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Listar Mesa por Número de Comensales");
+        System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Listar Mesa por Reserva");
+        System.out.println(Colores.rojo + "0. " + Colores.blanco + "Salir Menú Listar Mesa");
     }
 
     public static void listarMesa(){
@@ -317,11 +316,11 @@ public class Consultas {
         System.out.println(Colores.verde + " --------------");
         System.out.println(Colores.verde + "|   Producto   |");
         System.out.println(Colores.verde + " --------------");
-        System.out.println(Colores.amarillo + "1." + Colores.blanco + "Listar Todos los Productos");
-        System.out.println(Colores.amarillo + "2." + Colores.blanco + "Listar Producto por ID");
-        System.out.println(Colores.amarillo + "3." + Colores.blanco + "Listar Producto por Denominación");
-        System.out.println(Colores.amarillo + "4." + Colores.blanco + "Listar Producto por Precio");
-        System.out.println(Colores.rojo + "0." + Colores.blanco + "Salir");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Listar Todos los Productos");
+        System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Listar Producto por ID");
+        System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Listar Producto por Denominación");
+        System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Listar Producto por Precio");
+        System.out.println(Colores.rojo + "0. " + Colores.blanco + "Salir Menú Listar Producto");
     }
 
     public static void listarProducto(){
@@ -337,7 +336,7 @@ public class Consultas {
 
                 case 1 ->{
                     try {
-                        listarTodasLosProductos();
+                        listarTodosLosProductos();
                     } catch (Exception e) {
                         System.out.println(Colores.rojo + "Error al listar los productos" + Colores.blanco);
                     }
@@ -395,12 +394,12 @@ public class Consultas {
         System.out.println(Colores.verde + " --------------");
         System.out.println(Colores.verde + "|   Factura    |");
         System.out.println(Colores.verde + " --------------");
-        System.out.println(Colores.amarillo + "1." + Colores.blanco + "Listar Todas las Facturas");
-        System.out.println(Colores.amarillo + "2." + Colores.blanco + "Listar Factura por ID");
-        System.out.println(Colores.amarillo + "3." + Colores.blanco + "Listar Factura por ID Mesa");
-        System.out.println(Colores.amarillo + "4." + Colores.blanco + "Listar Factura por Tipo de Pago");
-        System.out.println(Colores.amarillo + "5." + Colores.blanco + "Listar Factura por Importe");
-        System.out.println(Colores.rojo + "0." + Colores.blanco + "Salir");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Listar Todas las Facturas");
+        System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Listar Factura por ID");
+        System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Listar Factura por ID Mesa");
+        System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Listar Factura por Tipo de Pago");
+        System.out.println(Colores.amarillo + "5. " + Colores.blanco + "Listar Factura por Importe");
+        System.out.println(Colores.rojo + "0. " + Colores.blanco + "Salir Menú Listar Factura");
     }
 
     public static void listarFactura(){
@@ -487,12 +486,12 @@ public class Consultas {
         System.out.println(Colores.verde + " --------------");
         System.out.println(Colores.verde + "|    Pedido    |");
         System.out.println(Colores.verde + " --------------");
-        System.out.println(Colores.amarillo + "1." + Colores.blanco + "Listar Todos los Pedidos");
-        System.out.println(Colores.amarillo + "2." + Colores.blanco + "Listar Pedido por ID");
-        System.out.println(Colores.amarillo + "3." + Colores.blanco + "Listar Pedido por ID Factura");
-        System.out.println(Colores.amarillo + "4." + Colores.blanco + "Listar Pedido por ID Producto");
-        System.out.println(Colores.amarillo + "5." + Colores.blanco + "Listar Pedido por Cantidad");
-        System.out.println(Colores.rojo + "0." + Colores.blanco + "Salir");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Listar Todos los Pedidos");
+        System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Listar Pedido por ID");
+        System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Listar Pedido por ID Factura");
+        System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Listar Pedido por ID Producto");
+        System.out.println(Colores.amarillo + "5. " + Colores.blanco + "Listar Pedido por Cantidad");
+        System.out.println(Colores.rojo + "0. " + Colores.blanco + "Salir Menú Listar Pedido");
     }
 
     public static void listarPedido(){
