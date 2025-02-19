@@ -33,6 +33,11 @@ public class Consultas {
         return mesa;
     }
 
+    public static ENTMesa obtenerUnaMesaPorIDActualizar(int id) throws Exception {
+        ENTMesa mesa = Accesobd.sesion.get(ENTMesa.class, id);
+        return mesa;
+    }
+
     public static void listarMesasPorNumeroComensales(int numComensales) throws Exception {
         instancia.abrir();
         List<ENTMesa> mesas = Accesobd.sesion.createQuery("From ENTMesa Where numComensales = numComensales", ENTMesa.class).list();
@@ -77,6 +82,11 @@ public class Consultas {
         ENTProducto producto = Accesobd.sesion.get(ENTProducto.class, id);
         Accesobd.transaction.commit();
         Accesobd.sesion.close();
+        return producto;
+    }
+
+    public static ENTProducto obtenerUnProductoPorIDActualizar(int id) throws Exception {
+        ENTProducto producto = Accesobd.sesion.get(ENTProducto.class, id);
         return producto;
     }
 
@@ -125,6 +135,11 @@ public class Consultas {
         ENTFactura factura = Accesobd.sesion.get(ENTFactura.class, id);
         Accesobd.transaction.commit();
         Accesobd.sesion.close();
+        return factura;
+    }
+
+    public static ENTFactura obtenerUnaFacturaPorIDActualizar(int id) throws Exception {
+        ENTFactura factura = Accesobd.sesion.get(ENTFactura.class, id);
         return factura;
     }
 
@@ -299,7 +314,7 @@ public class Consultas {
                 }
 
                 case 0 ->{
-                    System.out.println("Saliendo del menú Listar Mesas");
+                    System.out.println(Colores.magenta + "Saliendo del menú Listar Mesas" + Colores.blanco);
                 }
 
                 default ->{
@@ -316,7 +331,7 @@ public class Consultas {
         System.out.println(Colores.verde + " --------------");
         System.out.println(Colores.verde + "|   Producto   |");
         System.out.println(Colores.verde + " --------------");
-        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Listar Todos los Productos");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Listar Todos los pedidos");
         System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Listar Producto por ID");
         System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Listar Producto por Denominación");
         System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Listar Producto por Precio");
@@ -377,7 +392,7 @@ public class Consultas {
                 }
 
                 case 0 ->{
-                    System.out.println("Saliendo del menú Listar Productos");
+                    System.out.println(Colores.magenta + "Saliendo del menú Listar Productos" + Colores.blanco);
                 }
 
                 default ->{
@@ -468,7 +483,7 @@ public class Consultas {
                 }
 
                 case 0 ->{
-                    System.out.println("Saliendo del menú Listar Facturas");
+                    System.out.println(Colores.magenta + "Saliendo del menú Listar Facturas" + Colores.blanco);
                 }
 
                 default ->{
@@ -559,7 +574,7 @@ public class Consultas {
                 }
 
                 case 0 ->{
-                    System.out.println("Saliendo del menú Listar Pedidos");
+                    System.out.println(Colores.magenta + "Saliendo del menú Listar Pedidos" + Colores.blanco);
                 }
 
                 default ->{

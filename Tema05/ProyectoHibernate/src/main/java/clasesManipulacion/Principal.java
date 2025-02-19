@@ -22,7 +22,6 @@ public class Principal {
         System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Listar Datos");
         System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Editar Datos");
         System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Borrar Datos");
-        System.out.println(Colores.amarillo + "5. " + Colores.blanco + "Borrar Tablas");
         System.out.println(Colores.rojo + "0. " + Colores.blanco + "Salir");
     }
 
@@ -59,7 +58,7 @@ public class Principal {
 
                 case 4 ->{
 
-                    System.out.println("a");
+                    borrar();
 
                 }
 
@@ -71,13 +70,13 @@ public class Principal {
 
                 case 0 ->{
 
-                    System.out.println("Saliendo del programa");
+                    System.out.println(Colores.amarillo + "Saliendo del programa" + Colores.blanco);
 
                 }
 
                 default ->{
 
-                    System.out.println("Opción no válida");
+                    System.out.println(Colores.rojo + "Opción no válida" + Colores.blanco);
 
                 }
 
@@ -138,7 +137,7 @@ public class Principal {
                         Agregar.agregarMesa(mesa);
                         System.out.println(Colores.verde + "Mesa añdida correctamente" + Colores.blanco);
                     } catch (Exception e) {
-                        System.out.println("Error al crear la mesa");
+                        System.out.println(Colores.rojo + "Error al crear la mesa" + Colores.blanco);
                     }
                 }
 
@@ -153,9 +152,9 @@ public class Principal {
 
                     try {
                         Agregar.agregarProductos(producto);
-                        System.out.println(Colores.verde + "Producto añdida correctamente" + Colores.blanco);
+                        System.out.println(Colores.verde + "Producto añdido correctamente" + Colores.blanco);
                     } catch (Exception e) {
-                        System.out.println("Error al crear el producto");
+                        System.out.println(Colores.rojo + "Error al crear el producto" + Colores.blanco);
                     }
                 }
 
@@ -175,7 +174,7 @@ public class Principal {
                         Agregar.agregarFacturas(factura);
                         System.out.println(Colores.verde + "Factura añdida correctamente" + Colores.blanco);
                     } catch (Exception e) {
-                        System.out.println("Error al crear la factura");
+                        System.out.println(Colores.rojo + "Error al crear la factura" + Colores.blanco);
                     }
                 }
 
@@ -195,10 +194,18 @@ public class Principal {
 
                     try {
                         Agregar.agregarPedidos(pedido);
-                        System.out.println(Colores.verde + "Pedido añdida correctamente" + Colores.blanco);
+                        System.out.println(Colores.verde + "Pedido añdido correctamente" + Colores.blanco);
                     } catch (Exception e) {
-                        System.out.println("Error al crear el pedido");
+                        System.out.println(Colores.rojo + "Error al crear el pedido" + Colores.blanco);
                     }
+                }
+
+                case 0 ->{
+                    System.out.println(Colores.magenta + "Saliendo del menú agregar" + Colores.blanco);
+                }
+
+                default -> {
+                    System.out.println(Colores.rojo + "Opción no válida" + Colores.blanco);
                 }
 
             }
@@ -247,11 +254,11 @@ public class Principal {
                 }
 
                 case 0 ->{
-                    System.out.println("Saliendo del menú listar");
+                    System.out.println(Colores.magenta + "Saliendo del menú listar" + Colores.blanco);
                 }
 
                 default ->{
-                    System.out.println("Opción no válida");
+                    System.out.println(Colores.rojo + "Opción no válida" + Colores.blanco);
                 }
 
             }
@@ -300,7 +307,7 @@ public class Principal {
                 }
 
                 case 0 ->{
-                    System.out.println("Saliendo del Menú editar");
+                    System.out.println(Colores.magenta + "Saliendo del Menú editar" + Colores.blanco);
                 }
 
                 default ->{
@@ -310,6 +317,64 @@ public class Principal {
             }
 
         }while (opc != 0);
+
+    }
+
+    public static void menuBorrar() {
+        System.out.println(Colores.verde + " --------------");
+        System.out.println(Colores.verde + "|    Borrar    |");
+        System.out.println(Colores.verde + " --------------");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Borrar Mesa");
+        System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Borrar Producto");
+        System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Borrar Factura");
+        System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Borrar Pedido");
+        System.out.println(Colores.rojo + "0. " + Colores.blanco + "Salir Menú Borrar");
+    }
+
+    public static void borrar() throws Exception {
+
+        int opc = -1;
+        int idProducto = 0;
+        int idFactura = 0;
+        int idPedido = 0;
+        int idMesa = 0;
+
+
+        do{
+
+            menuBorrar();
+            System.out.println("Elija una opción");
+            opc = sc.nextInt();
+
+            switch (opc){
+
+                case 1 ->{
+                    Deletes.borrarMesa();
+                }
+
+                case 2 ->{
+                    Deletes.borrarProducto();
+                }
+
+                case 3 ->{
+                    Deletes.borrarFactura();
+                }
+
+                case 4 ->{
+                    Deletes.borrarPedido();
+                }
+
+                case 0 ->{
+                    System.out.println(Colores.magenta + "Saliendo del menú borrar" + Colores.blanco);
+                }
+
+                default ->{
+                    System.out.println(Colores.rojo + "Opción no válida" + Colores.blanco);
+                }
+
+            }
+
+        }while(opc != 0);
 
     }
 

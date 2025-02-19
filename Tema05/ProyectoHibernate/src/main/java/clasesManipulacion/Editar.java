@@ -34,7 +34,7 @@ public class Editar {
         instancia.abrir();
 
         int idMesaAsociada = factura.getIdMesa();
-        ENTMesa mesaFactura = Consultas.obtenerUnaMesaPorID(idMesaAsociada);
+        ENTMesa mesaFactura = Consultas.obtenerUnaMesaPorIDActualizar(idMesaAsociada);
 
         ENTFactura fact = Accesobd.sesion.get(ENTFactura.class, id);
         fact.setImporte(factura.getImporte());
@@ -49,10 +49,10 @@ public class Editar {
         instancia.abrir();
 
         int idProductoAsociado = pedido.getIdProducto();
-        ENTProducto productoPedido = Consultas.obtenerUnProductoPorID(idProductoAsociado);
+        ENTProducto productoPedido = Consultas.obtenerUnProductoPorIDActualizar(idProductoAsociado);
 
         int idFacturaAsociada = pedido.getIdFactura();
-        ENTFactura facturaPedido = Consultas.obtenerUnaFacturaPorID(idFacturaAsociada);
+        ENTFactura facturaPedido = Consultas.obtenerUnaFacturaPorIDActualizar(idFacturaAsociada);
 
         ENTPedido ped = Accesobd.sesion.get(ENTPedido.class, id);
         ped.setCantidad(pedido.getCantidad());
