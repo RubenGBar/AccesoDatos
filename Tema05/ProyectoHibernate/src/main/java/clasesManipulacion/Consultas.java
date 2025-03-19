@@ -40,7 +40,7 @@ public class Consultas {
 
     public static void listarMesasPorNumeroComensales(int numComensales) throws Exception {
         instancia.abrir();
-        List<ENTMesa> mesas = Accesobd.sesion.createQuery("From ENTMesa Where numComensales = numComensales", ENTMesa.class).list();
+        List<ENTMesa> mesas = Accesobd.sesion.createNativeQuery("Select * From ENTMesa Where numComensales like ?", ENTMesa.class).setParameter(1, numComensales).getResultList();
         for (ENTMesa mesa : mesas) {
             System.out.println("ID: " + mesa.getIdMesa());
             System.out.println("Número Comensales: " + mesa.getNumComensales());
@@ -53,7 +53,7 @@ public class Consultas {
 
     public static void listarMesasPorReserva(int reserva) throws Exception {
         instancia.abrir();
-        List<ENTMesa> mesas = Accesobd.sesion.createQuery("From ENTMesa Where reserva = reserva", ENTMesa.class).list();
+        List<ENTMesa> mesas = Accesobd.sesion.createNativeQuery("Select * From ENTMesa Where reserva like ?", ENTMesa.class).setParameter(1, reserva).getResultList();
         for (ENTMesa mesa : mesas) {
             System.out.println("ID: " + mesa.getIdMesa());
             System.out.println("Número Comensales: " + mesa.getNumComensales());
@@ -90,9 +90,10 @@ public class Consultas {
         return producto;
     }
 
+    //TODO No funciona bien
     public static void listarProductosPorDenominacion(String denominacion) throws Exception {
         instancia.abrir();
-        List<ENTProducto> productos = Accesobd.sesion.createQuery("From ENTProducto where denominacion = denominacion", ENTProducto.class).list();
+        List<ENTProducto> productos = Accesobd.sesion.createNativeQuery("Select * From ENTProducto where denominacion like ?", ENTProducto.class).setParameter(1, denominacion).getResultList();
         for (ENTProducto producto : productos) {
             System.out.println("ID: " + producto.getIdProducto());
             System.out.println("Denominación: " + producto.getDenominacion());
@@ -105,7 +106,7 @@ public class Consultas {
 
     public static void listarProductosPorDenominacion(double precio) throws Exception {
         instancia.abrir();
-        List<ENTProducto> productos = Accesobd.sesion.createQuery("From ENTProducto where precio = precio", ENTProducto.class).list();
+        List<ENTProducto> productos = Accesobd.sesion.createNativeQuery("Select * From ENTProducto where precio lke ?", ENTProducto.class).setParameter(1, precio).getResultList();
         for (ENTProducto producto : productos) {
             System.out.println("ID: " + producto.getIdProducto());
             System.out.println("Denominación: " + producto.getDenominacion());
@@ -159,7 +160,7 @@ public class Consultas {
 
     public static void listarFacturasPorTipoPago(String tipoPago) throws Exception {
         instancia.abrir();
-        List<ENTFactura> facturas = Accesobd.sesion.createQuery("From ENTFactura where tipoPago = tipoPago", ENTFactura.class).getResultList();
+        List<ENTFactura> facturas = Accesobd.sesion.createNativeQuery("Select * From ENTFactura where tipoPago like ?", ENTFactura.class).setParameter(1, tipoPago).getResultList();
         for (ENTFactura factura : facturas) {
             System.out.println("ID: " + factura.getIdFactura());
             System.out.println("ID Mesa Asocida: " + factura.getIdMesa());
@@ -173,7 +174,7 @@ public class Consultas {
 
     public static void listarFacturasPorTipoPago(double importe) throws Exception {
         instancia.abrir();
-        List<ENTFactura> facturas = Accesobd.sesion.createQuery("From ENTFactura where importe = importe", ENTFactura.class).getResultList();
+        List<ENTFactura> facturas = Accesobd.sesion.createNativeQuery("Select * From ENTFactura where importe like ?", ENTFactura.class).setParameter(1, importe).getResultList();
         for (ENTFactura factura : facturas) {
             System.out.println("ID: " + factura.getIdFactura());
             System.out.println("ID Mesa Asocida: " + factura.getIdMesa());
@@ -237,7 +238,7 @@ public class Consultas {
 
     public static void listarPedidosPorCantidad(int cantidad) throws Exception {
         instancia.abrir();
-        List<ENTPedido> pedidos = Accesobd.sesion.createQuery("From ENTPedido where cantidad = cantidad", ENTPedido.class).list();
+        List<ENTPedido> pedidos = Accesobd.sesion.createNativeQuery("Select * From ENTPedido where cantidad ?", ENTPedido.class).setParameter(1, cantidad).getResultList();
         for (ENTPedido pedido : pedidos) {
             System.out.println("ID: " + pedido.getIdPedido());
             System.out.println("ID Factura Asocida: " + pedido.getIdFactura());
@@ -331,7 +332,7 @@ public class Consultas {
         System.out.println(Colores.verde + " --------------");
         System.out.println(Colores.verde + "|   Producto   |");
         System.out.println(Colores.verde + " --------------");
-        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Listar Todos los pedidos");
+        System.out.println(Colores.amarillo + "1. " + Colores.blanco + "Listar Todos los Productos");
         System.out.println(Colores.amarillo + "2. " + Colores.blanco + "Listar Producto por ID");
         System.out.println(Colores.amarillo + "3. " + Colores.blanco + "Listar Producto por Denominación");
         System.out.println(Colores.amarillo + "4. " + Colores.blanco + "Listar Producto por Precio");

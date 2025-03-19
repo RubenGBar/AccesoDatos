@@ -90,8 +90,15 @@ public class Editar {
 
             if(editar.equalsIgnoreCase("Si")){
 
-                System.out.println("Introduce el nuevo número de comensales de la mesa");
-                numComensales = Principal.sc.nextInt();
+                do {
+                    System.out.println("Introduce el nuevo número de comensales de la mesa");
+                    numComensales = Principal.sc.nextInt();
+
+                    if (numComensales < 1) {
+                        System.out.println(Colores.rojo + "El número de comensales no puede ser menor que 1" + Colores.blanco);
+                    }
+                } while (numComensales < 1);
+
                 Principal.sc.nextLine();
 
             } else {
@@ -106,8 +113,15 @@ public class Editar {
 
             if(editar.equalsIgnoreCase("Si")){
 
-                System.out.println("Introduce si la mesa tiene reserva (1 Sí | 0 No)");
-                reserva = Principal.sc.nextInt();
+                do {
+                    System.out.println("Introduce si la mesa tiene reserva (1 Sí | 0 No)");
+                    reserva = Principal.sc.nextInt();
+                    if (reserva == 1 || reserva == 0) {
+                        System.out.println(Colores.rojo + "La reserva debe ser 1 o 0" + Colores.blanco);
+                    }
+                } while (reserva != 1 && reserva != 0);
+
+                Principal.sc.nextLine();
 
             } else {
 
@@ -116,16 +130,32 @@ public class Editar {
 
             }
 
-            ENTMesa mesa = new ENTMesa(numComensales, reserva);
-            Editar.actualizarMesa(idMesa, mesa);
+            System.out.println(Colores.azul + "¿Quieres guardar los cambios?" + Colores.blanco);
+            editar = Principal.sc.nextLine();
 
-            mesaAEditar = Consultas.obtenerUnaMesaPorID(idMesa);
-            System.out.println(Colores.verde + "Mesa Editada");
-            System.out.println("ID: " + mesaAEditar.getIdMesa());
-            System.out.println("Número Comensales: " + mesaAEditar.getNumComensales());
-            System.out.println("Reserva: " + mesaAEditar.getReserva());
-            System.out.println("--------------------------------------" + Colores.blanco);
+            if(editar.equalsIgnoreCase("Si")){
 
+                ENTMesa mesa = new ENTMesa(numComensales, reserva);
+                Editar.actualizarMesa(idMesa, mesa);
+
+                mesaAEditar = Consultas.obtenerUnaMesaPorID(idMesa);
+                System.out.println(Colores.verde + "Mesa Editada");
+                System.out.println("ID: " + mesaAEditar.getIdMesa());
+                System.out.println("Número Comensales: " + mesaAEditar.getNumComensales());
+                System.out.println("Reserva: " + mesaAEditar.getReserva());
+                System.out.println("--------------------------------------" + Colores.blanco);
+
+            } else {
+
+                mesaAEditar = Consultas.obtenerUnaMesaPorID(idMesa);
+                System.out.println(Colores.naranja + "Mesa Sin Editar");
+                System.out.println("No se ha editado la mesa");
+                System.out.println("ID: " + mesaAEditar.getIdMesa());
+                System.out.println("Número Comensales: " + mesaAEditar.getNumComensales());
+                System.out.println("Reserva: " + mesaAEditar.getReserva());
+                System.out.println("--------------------------------------" + Colores.blanco);
+
+            }
 
         }catch(Exception e){
 
@@ -162,8 +192,15 @@ public class Editar {
 
             if(editar.equalsIgnoreCase("Si")){
 
-                System.out.println("Introduce la nueva denominación del producto");
-                denominacion = Principal.sc.nextLine();
+                do {
+                    System.out.println("Introduce la nueva denominación del producto");
+                    denominacion = Principal.sc.nextLine();
+
+                    if (denominacion.equals("")) {
+                        System.out.println(Colores.rojo + "La denominación no puede estar vacía" + Colores.blanco);
+                    }
+
+                }while(denominacion.equals(""));
 
             } else {
 
@@ -177,8 +214,17 @@ public class Editar {
 
             if(editar.equalsIgnoreCase("Si")){
 
-                System.out.println("Introduce el nuevo precio del producto");
-                precio = Principal.sc.nextDouble();
+                do {
+                    System.out.println("Introduce el nuevo precio del producto");
+                    precio = Principal.sc.nextDouble();
+
+                    if (precio < 0) {
+                        System.out.println(Colores.rojo + "El precio no puede ser menor que 0" + Colores.blanco);
+                    }
+
+                } while (precio < 0);
+
+                Principal.sc.nextLine();
 
             } else {
 
@@ -187,15 +233,31 @@ public class Editar {
 
             }
 
-            ENTProducto producto = new ENTProducto(denominacion, precio);
-            Editar.actualizarProducto(idProducto, producto);
+            System.out.println(Colores.azul + "¿Quieres guardar los cambios?" + Colores.blanco);
+            editar = Principal.sc.nextLine();
 
-            productoAEditar = Consultas.obtenerUnProductoPorID(idProducto);
-            System.out.println(Colores.verde + "Producto Editado");
-            System.out.println("ID: " + productoAEditar.getIdProducto());
-            System.out.println("Denominación: " + productoAEditar.getDenominacion());
-            System.out.println("Precio: " + productoAEditar.getPrecio());
-            System.out.println("--------------------------------------" + Colores.blanco);
+            if(editar.equalsIgnoreCase("Si")){
+
+                ENTProducto producto = new ENTProducto(denominacion, precio);
+                Editar.actualizarProducto(idProducto, producto);
+
+                productoAEditar = Consultas.obtenerUnProductoPorID(idProducto);
+                System.out.println(Colores.verde + "Producto Editado");
+                System.out.println("ID: " + productoAEditar.getIdProducto());
+                System.out.println("Denominación: " + productoAEditar.getDenominacion());
+                System.out.println("Precio: " + productoAEditar.getPrecio());
+                System.out.println("--------------------------------------" + Colores.blanco);
+
+            } else {
+
+                productoAEditar = Consultas.obtenerUnProductoPorID(idProducto);
+                System.out.println(Colores.verde + "Producto Sin Editar");
+                System.out.println("ID: " + productoAEditar.getIdProducto());
+                System.out.println("Denominación: " + productoAEditar.getDenominacion());
+                System.out.println("Precio: " + productoAEditar.getPrecio());
+                System.out.println("--------------------------------------" + Colores.blanco);
+
+            }
 
 
         }catch(Exception e){
@@ -236,8 +298,17 @@ public class Editar {
 
             if(editar.equalsIgnoreCase("Si")){
 
-                System.out.println("Introduce el nuevo importe de la factura");
-                importe = Principal.sc.nextDouble();
+                do {
+
+                    System.out.println("Introduce el nuevo importe de la factura");
+                    importe = Principal.sc.nextDouble();
+
+                    if (importe < 0) {
+                        System.out.println(Colores.rojo + "El importe no puede ser menor que 0" + Colores.blanco);
+                    }
+
+                }while (importe < 0);
+
                 Principal.sc.nextLine();
 
             } else {
@@ -252,8 +323,16 @@ public class Editar {
 
             if(editar.equalsIgnoreCase("Si")){
 
-                System.out.println("Introduce el nuevo tipo de pago de la factura");
-                tipoPago = Principal.sc.nextLine();
+                do {
+
+                    System.out.println("Introduce el nuevo tipo de pago de la factura");
+                    tipoPago = Principal.sc.nextLine();
+
+                    if (tipoPago.equals("")) {
+                        System.out.println(Colores.rojo + "El tipo de pago no puede estar vacío" + Colores.blanco);
+                    }
+
+                }while (tipoPago.equals(""));
 
             } else {
 
@@ -267,8 +346,16 @@ public class Editar {
 
             if(editar.equalsIgnoreCase("Si")){
 
-                System.out.println("Introduce el id de la mesa asociada a la factura");
-                idMesa = Principal.sc.nextInt();
+                do {
+
+                    System.out.println("Introduce el id de la mesa asociada a la factura");
+                    idMesa = Principal.sc.nextInt();
+
+                    if (idMesa < 0) {
+                        System.out.println(Colores.rojo + "El id de la mesa no puede ser menor que 0" + Colores.blanco);
+                    }
+
+                }while (idMesa < 0);
 
             } else {
 
@@ -279,16 +366,32 @@ public class Editar {
 
             mesaFacftura = Consultas.obtenerUnaMesaPorID(idMesa);
 
-            ENTFactura factura = new ENTFactura(mesaFacftura, tipoPago, importe);
-            Editar.actualizarFactura(idFactura, factura);
+            System.out.println(Colores.azul + "¿Quieres guardar los cambios?" + Colores.blanco);
+            editar = Principal.sc.nextLine();
 
-            facturaAEditar = Consultas.obtenerUnaFacturaPorID(idFactura);
-            System.out.println(Colores.verde + "Factura Editada");
-            System.out.println("ID: " + facturaAEditar.getIdFactura());
-            System.out.println("ID Mesa Asocida: " + facturaAEditar.getIdMesa());
-            System.out.println("Tipo de Pago: " + facturaAEditar.getTipoPago());
-            System.out.println("Importe: " + facturaAEditar.getImporte());
-            System.out.println("--------------------------------------" + Colores.blanco);
+            if(editar.equalsIgnoreCase("Si")){
+
+                ENTFactura factura = new ENTFactura(mesaFacftura, tipoPago, importe);
+                Editar.actualizarFactura(idFactura, factura);
+
+                facturaAEditar = Consultas.obtenerUnaFacturaPorID(idFactura);
+                System.out.println(Colores.verde + "Factura Editada");
+                System.out.println("ID: " + facturaAEditar.getIdFactura());
+                System.out.println("ID Mesa Asocida: " + facturaAEditar.getIdMesa());
+                System.out.println("Tipo de Pago: " + facturaAEditar.getTipoPago());
+                System.out.println("Importe: " + facturaAEditar.getImporte());
+                System.out.println("--------------------------------------" + Colores.blanco);
+
+            } else {
+
+                System.out.println(Colores.verde + "Factura sin Editar");
+                System.out.println("ID: " + facturaAEditar.getIdFactura());
+                System.out.println("ID Mesa Asocida: " + facturaAEditar.getIdMesa());
+                System.out.println("Tipo de Pago: " + facturaAEditar.getTipoPago());
+                System.out.println("Importe: " + facturaAEditar.getImporte());
+                System.out.println("--------------------------------------" + Colores.blanco);
+
+            }
 
         }catch(Exception e){
 
@@ -331,8 +434,17 @@ public class Editar {
 
             if(editar.equalsIgnoreCase("Si")){
 
-                System.out.println("Introduce la nueva cantidad del pedido");
-                cantidad = Principal.sc.nextInt();
+                do {
+
+                    System.out.println("Introduce la nueva cantidad del pedido");
+                    cantidad = Principal.sc.nextInt();
+
+                    if (cantidad < 0) {
+                        System.out.println(Colores.rojo + "La cantidad no puede ser menor que 0" + Colores.blanco);
+                    }
+
+                }while (cantidad < 0);
+
                 Principal.sc.nextLine();
 
             } else {
@@ -347,8 +459,17 @@ public class Editar {
 
             if(editar.equalsIgnoreCase("Si")){
 
-                System.out.println("Introduce el id del producto asociado al pedido");
-                idProducto = Principal.sc.nextInt();
+                do {
+
+                    System.out.println("Introduce el id del producto asociado al pedido");
+                    idProducto = Principal.sc.nextInt();
+
+                    if (idProducto < 0) {
+                        System.out.println(Colores.rojo + "El id del producto no puede ser menor que 0" + Colores.blanco);
+                    }
+
+                }while (idProducto < 0);
+
                 Principal.sc.nextLine();
 
             } else {
@@ -363,8 +484,16 @@ public class Editar {
 
             if(editar.equalsIgnoreCase("Si")){
 
-                System.out.println("Introduce el id de la factura asociada al pedido");
-                idFactura = Principal.sc.nextInt();
+                do {
+
+                    System.out.println("Introduce el id de la factura asociada al pedido");
+                    idFactura = Principal.sc.nextInt();
+
+                    if (idFactura < 0) {
+                        System.out.println(Colores.rojo + "El id de la factura no puede ser menor que 0" + Colores.blanco);
+                    }
+
+                }while (idFactura < 0);
 
             } else {
 
@@ -376,17 +505,32 @@ public class Editar {
             productoPedido = Consultas.obtenerUnProductoPorID(idProducto);
             facturaPedido = Consultas.obtenerUnaFacturaPorID(idFactura);
 
-            ENTPedido pedido = new ENTPedido(facturaPedido, productoPedido, cantidad);
-            Editar.actualizarPedido(idPedido, pedido);
+            System.out.println(Colores.azul + "¿Quieres guardar los cambios?" + Colores.blanco);
+            editar = Principal.sc.nextLine();
 
-            pedidoAEditar = Consultas.obtenerUnPedidoPorID(idPedido);
-            System.out.println(Colores.verde + "Pedido Editado");
-            System.out.println("ID: " + pedidoAEditar.getIdPedido());
-            System.out.println("ID Factura Asocida: " + pedidoAEditar.getIdFactura());
-            System.out.println("ID Producto Asocido: " + pedidoAEditar.getIdProducto());
-            System.out.println("Cantidad: " + pedidoAEditar.getCantidad());
-            System.out.println("--------------------------------------" + Colores.blanco);
+            if(editar.equalsIgnoreCase("Si")){
 
+                ENTPedido pedido = new ENTPedido(facturaPedido, productoPedido, cantidad);
+                Editar.actualizarPedido(idPedido, pedido);
+
+                pedidoAEditar = Consultas.obtenerUnPedidoPorID(idPedido);
+                System.out.println(Colores.verde + "Pedido Editado");
+                System.out.println("ID: " + pedidoAEditar.getIdPedido());
+                System.out.println("ID Factura Asocida: " + pedidoAEditar.getIdFactura());
+                System.out.println("ID Producto Asocido: " + pedidoAEditar.getIdProducto());
+                System.out.println("Cantidad: " + pedidoAEditar.getCantidad());
+                System.out.println("--------------------------------------" + Colores.blanco);
+
+            } else {
+
+                System.out.println(Colores.verde + "Pedido Sin Editado");
+                System.out.println("ID: " + pedidoAEditar.getIdPedido());
+                System.out.println("ID Factura Asocida: " + pedidoAEditar.getIdFactura());
+                System.out.println("ID Producto Asocido: " + pedidoAEditar.getIdProducto());
+                System.out.println("Cantidad: " + pedidoAEditar.getCantidad());
+                System.out.println("--------------------------------------" + Colores.blanco);
+
+            }
 
         }catch(Exception e){
 

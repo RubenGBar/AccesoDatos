@@ -62,12 +62,6 @@ public class Principal {
 
                 }
 
-                case 5 ->{
-
-                    System.out.println("e");
-
-                }
-
                 case 0 ->{
 
                     System.out.println(Colores.amarillo + "Saliendo del programa" + Colores.blanco);
@@ -113,9 +107,13 @@ public class Principal {
         String nombre = "";
         String tipoPago = "";
         ENTMesa mesa;
+        ENTMesa mesaMostrar;
         ENTPedido pedido;
+        ENTPedido pedidoMostrar;
         ENTFactura factura;
+        ENTFactura facturaMostrar;
         ENTProducto producto;
+        ENTProducto productoMostrar;
 
         do{
 
@@ -135,7 +133,12 @@ public class Principal {
 
                     try {
                         Agregar.agregarMesa(mesa);
-                        System.out.println(Colores.verde + "Mesa añdida correctamente" + Colores.blanco);
+                        mesaMostrar = Consultas.obtenerUnaMesaPorID(mesa.getIdMesa());
+                        System.out.println(Colores.verde + "Mesa añdida correctamente");
+                        System.out.println("ID: " + mesaMostrar.getIdMesa());
+                        System.out.println("Número Comensales: " + mesaMostrar.getNumComensales());
+                        System.out.println("Reserva: " + mesaMostrar.getReserva());
+                        System.out.println("--------------------------------------" + Colores.blanco);
                     } catch (Exception e) {
                         System.out.println(Colores.rojo + "Error al crear la mesa" + Colores.blanco);
                     }
@@ -152,7 +155,12 @@ public class Principal {
 
                     try {
                         Agregar.agregarProductos(producto);
-                        System.out.println(Colores.verde + "Producto añdido correctamente" + Colores.blanco);
+                        productoMostrar = Consultas.obtenerUnProductoPorID(producto.getIdProducto());
+                        System.out.println(Colores.verde + "Producto Añadido Correctamente");
+                        System.out.println("ID: " + productoMostrar.getIdProducto());
+                        System.out.println("Denominación: " + productoMostrar.getDenominacion());
+                        System.out.println("Precio: " + productoMostrar.getPrecio());
+                        System.out.println("--------------------------------------" + Colores.blanco);
                     } catch (Exception e) {
                         System.out.println(Colores.rojo + "Error al crear el producto" + Colores.blanco);
                     }
@@ -172,7 +180,13 @@ public class Principal {
 
                     try {
                         Agregar.agregarFacturas(factura);
-                        System.out.println(Colores.verde + "Factura añdida correctamente" + Colores.blanco);
+                        facturaMostrar = Consultas.obtenerUnaFacturaPorID(factura.getIdFactura());
+                        System.out.println(Colores.verde + "Factura Añadida Correctamente");
+                        System.out.println("ID: " + facturaMostrar.getIdFactura());
+                        System.out.println("ID Mesa Asocida: " + facturaMostrar.getIdMesa());
+                        System.out.println("Tipo de Pago: " + facturaMostrar.getTipoPago());
+                        System.out.println("Importe: " + facturaMostrar.getImporte());
+                        System.out.println("--------------------------------------" + Colores.blanco);
                     } catch (Exception e) {
                         System.out.println(Colores.rojo + "Error al crear la factura" + Colores.blanco);
                     }
@@ -194,7 +208,13 @@ public class Principal {
 
                     try {
                         Agregar.agregarPedidos(pedido);
-                        System.out.println(Colores.verde + "Pedido añdido correctamente" + Colores.blanco);
+                        pedidoMostrar = Consultas.obtenerUnPedidoPorID(pedido.getIdPedido());
+                        System.out.println(Colores.verde + "Pedido Añadido Correctamente");
+                        System.out.println("ID: " + pedidoMostrar.getIdPedido());
+                        System.out.println("ID Factura Asocida: " + pedidoMostrar.getIdFactura());
+                        System.out.println("ID Producto Asocido: " + pedidoMostrar.getIdProducto());
+                        System.out.println("Cantidad: " + pedidoMostrar.getCantidad());
+                        System.out.println("--------------------------------------" + Colores.blanco);
                     } catch (Exception e) {
                         System.out.println(Colores.rojo + "Error al crear el pedido" + Colores.blanco);
                     }
